@@ -9,7 +9,7 @@ const useExternalServer = process.env.PLAYWRIGHT_BASE_URL !== undefined;
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  reporter: 'list',
+  reporter: [['list'], ['html', { open: 'never' }]],
   use: {
     baseURL,
     trace: 'retain-on-failure',

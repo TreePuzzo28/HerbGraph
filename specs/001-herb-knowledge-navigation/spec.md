@@ -75,6 +75,39 @@ As the content owner, I want to prepare an updated app from selected Obsidian no
 
 ---
 
+### User Story 5 - Review customer-readable test results (Priority: P2)
+
+As a customer or release reviewer, I want a plain-English report of the acceptance scenarios and their outcomes, so that I can understand what was verified for a delivery without reading test code.
+
+**Why this priority**: A clear test report provides evidence that the delivered browsing behavior was checked.
+
+**Independent Test**: Run the Playwright browser-acceptance suite and open its HTML report; confirm each US1-US4 browser scenario has its own readable result and the report identifies the test run.
+
+**Acceptance Scenarios**:
+
+1. **Given** the Playwright browser-acceptance suite has run, **When** the report is opened, **Then** every US1-US4 browser scenario appears as a plain-English test with a passed, failed, or skipped result.
+2. **Given** an acceptance scenario fails, **When** a customer opens the report, **Then** the failed scenario and its available diagnostic are identifiable without requiring access to the source code.
+3. **Given** a customer delivery is prepared, **When** its test report is attached to the delivery, **Then** the report identifies the corresponding application version or commit and test-run date.
+
+---
+
+### User Story 6 - Use current release documentation (Priority: P2)
+
+As a reader or customer, I want a current illustrated guide and release notes with each delivery, so that I can learn how to use the app and understand what changed.
+
+**Why this priority**: Documentation is part of a usable, reviewable customer delivery, not just an internal implementation note.
+
+**Independent Test**: Review the release materials for a delivered build; confirm the user guide describes the shipped browsing experience with current screenshots and the release notes summarize that delivery's user-visible changes.
+
+**Acceptance Scenarios**:
+
+1. **Given** a user opens the guide for a released app, **When** they follow its instructions, **Then** they can browse challenges, actions, and herbs and follow the supported navigation path.
+2. **Given** a feature becomes usable, **When** its implementation phase is accepted, **Then** the corresponding guide instructions and relevant screenshot are updated to match the current app.
+3. **Given** a customer delivery is prepared, **When** its release materials are assembled, **Then** an updated user guide and dated/versioned release notes are included with that delivery.
+4. **Given** user-visible work is completed but not yet released, **When** the release notes are updated, **Then** its summary is recorded under an Unreleased section and moved into the dated/versioned section for the next delivery.
+
+---
+
 ### Edge Cases
 
 - A relationship points to a note that is not included in the approved publication set.
@@ -108,6 +141,13 @@ As the content owner, I want to prepare an updated app from selected Obsidian no
 - **FR-016**: The deployed app MUST include only content approved for publication.
 - **FR-017**: The app MUST render published note content as non-executable content and MUST NOT run scripts or active markup from imported notes.
 - **FR-018**: The app MUST display a useful not-found state when a reader opens an invalid or unpublished entry address.
+- **FR-019**: The Playwright browser-acceptance suite MUST produce an HTML report for each run, listing every browser scenario for US1-US4 in plain English with a passed, failed, or skipped result.
+- **FR-020**: Each US1-US4 browser scenario intended for customer reporting MUST have a distinct test result; the report MUST identify the application version or commit and test-run date for a customer delivery.
+- **FR-021**: A failed acceptance test report MUST identify the failing scenario and include available diagnostics without requiring the reader to inspect test source code.
+- **FR-022**: The project MUST maintain a cumulative reader guide at `docs/user-guide.md` with screenshots in `docs/screenshots/`; the guide MUST be updated as each user-facing feature is accepted and MUST match the shipped app at release.
+- **FR-023**: Each customer delivery MUST include the current user guide, its applicable screenshots, and a dated or versioned release-notes entry.
+- **FR-024**: The project MUST maintain an `Unreleased` release-notes section that is updated with customer-visible changes and organized into a dated or versioned section for each delivery.
+- **FR-025**: Customer-facing reports, guides, screenshots, and release notes MUST NOT expose private or unapproved vault content.
 
 ### Key Entities
 
@@ -127,6 +167,9 @@ As the content owner, I want to prepare an updated app from selected Obsidian no
 - **SC-004**: Every published relationship in the test dataset resolves to the intended published entry; invalid or ambiguous relationships are reported before a content update can be published.
 - **SC-005**: A content owner can repeat the documented update process with a changed approved note set and verify the changed content in the deployed app.
 - **SC-006**: No note outside the explicitly approved content set is included in the deployed app's published content.
+- **SC-007**: Every US1-US4 browser scenario appears as a separate plain-English result in the generated HTML test report, with no missing or combined scenario outcomes.
+- **SC-008**: For every customer delivery, reviewers can identify the tested app version or commit and test date from the report and can access the matching user guide, screenshots, and release notes.
+- **SC-009**: After each user-facing feature is accepted, its user-guide instructions are updated before the next customer release; all included screenshots depict the corresponding shipped UI.
 
 ## Assumptions
 

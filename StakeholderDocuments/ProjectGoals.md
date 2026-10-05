@@ -21,6 +21,9 @@ The MVP includes:
 - Keep a user-visible educational disclaimer in the main app layout on every page
 - A repeatable process for importing approved Obsidian Markdown notes, validating their links, building the app data, and redeploying the updated app
 - Separate Playwright end-to-end tests for the deployed or locally hosted web app
+- A customer-readable HTML test report for each acceptance run, with an individual result for
+  each US1-US4 browser scenario
+- A cumulative illustrated user guide and dated or versioned release notes included with each customer delivery
 
 The MVP does not include user accounts, editing notes in the app, live access to an Obsidian vault, or a database.
 
@@ -46,6 +49,9 @@ The MVP is complete when:
 5. Re-running the documented import/build/deploy process makes approved Obsidian changes visible in the deployed app.
 6. A separate Playwright test project verifies the main browsing path in the running web app.
 7. The import/build process can be repeated with updated approved notes and produces data that is shown by the app.
+8. Each US1-US4 browser scenario has its own plain-English pass/fail/skip
+   result in a report identifying the app version or commit and test date.
+9. Each customer delivery includes the current user guide, matching screenshots, and dated or versioned release notes.
 
 ## Quality and content expectations
 
@@ -57,6 +63,15 @@ The MVP is complete when:
 ## Future enhancements
 
 After the MVP is deployed and its import process is reliable, possible enhancements include richer graph visualization, more advanced search and filtering, additional content formats, and automated deployment when approved content changes. These are not MVP requirements.
+
+## Customer delivery materials
+
+Maintain the user guide as the user-facing features are accepted, adding or correcting
+instructions and screenshots when the UI changes. Before each customer delivery, verify that
+the guide and screenshots match the shipped app. Maintain an `Unreleased` release-notes section
+for user-visible changes, then prepare a dated or versioned entry for each delivery. Include the
+Playwright HTML report with each customer delivery, with results for individual US1-US4
+browser scenarios.
 
 ## How this document fits with the others
 

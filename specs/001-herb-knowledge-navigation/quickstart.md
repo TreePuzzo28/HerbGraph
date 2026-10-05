@@ -51,7 +51,17 @@ when implementation tasks are completed; the command names below are the intende
    npm run test:e2e --prefix tests/e2e
    ```
 
-5. Verify the following browser path: open a challenge, follow an action, open an herb, return
+5. Open the generated HTML report:
+
+   ```sh
+   npm run test:e2e:report --prefix tests/e2e
+   ```
+
+   Confirm each US1-US4 browser scenario appears as its own plain-English
+   result. For a customer delivery, retain the complete report directory with the matching app
+   version or commit and test-run date.
+
+6. Verify the following browser path: open a challenge, follow an action, open an herb, return
    to the action, and select an alternative herb. Also verify the disclaimer on browse and
    detail pages and the empty/not-found states.
 
@@ -64,5 +74,12 @@ when implementation tasks are completed; the command names below are the intende
 4. Open the deployed URL and repeat the challenge → action → herb → alternative herb path.
 5. Update an approved source record, repeat import/build/deploy, and verify the update appears
    in the deployed app.
+6. Update the relevant user-guide instructions and screenshots as each user-facing feature is
+   accepted; before delivery, compare all screenshots and instructions with the deployed build.
+7. Add customer-visible changes to the `Unreleased` section in `CHANGELOG.md`. For each
+   customer delivery, prepare a dated/versioned release-notes entry and include the current
+   guide, screenshots, release notes, and Playwright HTML report with that delivery.
 
-The app is not considered ready for deployment if import validation or required tests fail.
+The app is not considered ready for deployment if import validation or required tests fail, or
+if the customer guide, screenshots, release notes, or corresponding test report are missing or
+do not match the delivery.

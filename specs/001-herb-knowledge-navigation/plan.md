@@ -10,9 +10,12 @@ Deliver a read-only static web app for browsing health challenges, herbal action
 all directions. A small Node.js content-preparation tool will read only curated, approved
 Markdown exports, validate frontmatter and Obsidian links, and generate a minimized JSON
 catalog. The React app will display that catalog, while a separate Playwright project verifies
-the browsing flow and disclaimer. Use GitHub Pages for the initial static deployment because
-the project is already hosted on GitHub; keep hosting-specific details isolated so another
-static host can be selected later.
+the browsing flow and disclaimer. Playwright will emit a customer-readable HTML report with a
+distinct result for each US1-US4 browser scenario; retain the report with its
+app version/commit and test-run date for each delivery. Maintain an illustrated user guide and
+release notes alongside feature development and include current copies with each delivery.
+Use GitHub Pages for the initial static deployment because the project is already hosted on
+GitHub; keep hosting-specific details isolated so another static host can be selected later.
 
 The representative vault notes use YAML frontmatter with `type`, `actions`,
 `health_challenges`, and optional `aliases`; link targets use Obsidian wikilinks. Challenge
@@ -30,7 +33,7 @@ frontmatter, Zod for input validation; Playwright in the separate end-to-end tes
 **Storage**: Generated static JSON bundled with the app; no database or server-side storage
 
 **Testing**: TypeScript unit tests for import/validation and relationships; separate Playwright
-project for browser acceptance flows
+project for browser acceptance flows and its built-in HTML report
 
 **Target Platform**: GitHub Pages static hosting and current desktop/mobile browsers; Vite's
 base path is configured for the repository subpath
@@ -81,6 +84,13 @@ specs/001-herb-knowledge-navigation/
 ├── contracts/
 │   └── content-import.md
 └── tasks.md
+
+docs/
+├── user-guide.md              # Cumulative customer instructions, refreshed per user story
+└── screenshots/               # Approved, current app screenshots used by the guide
+
+CHANGELOG.md                   # Unreleased notes and dated/versioned customer deliveries
+tests/e2e/playwright-report/    # Generated HTML report; excluded from source control
 ```
 
 ### Source Code (repository root)
@@ -116,6 +126,15 @@ modules to support later optional fields such as herb images without expanding M
 Use React Router hash-based URLs for reliable static deep links and configure Vite's `base`
 for the GitHub Pages repository path. The separate Playwright project starts the app through
 its `webServer` configuration and tests a production preview build for release validation.
+
+Use Playwright's built-in HTML reporter with automatic browser opening disabled. Each US1-US4
+browser scenario must be a separately named test so its result is independently visible. This
+customer-facing report covers browser acceptance results; importer unit-test results remain
+available through the regular test runner. Retain the report as a downloadable delivery
+artifact with the matching app version or commit and run date. The cumulative reader guide and
+screenshots are maintained as each user-facing story is accepted; `CHANGELOG.md` keeps an
+Unreleased section during development and a dated/versioned entry for each customer delivery.
+Delivery materials must contain only approved public content.
 
 ## Complexity Tracking
 

@@ -38,9 +38,30 @@ describe('relationship selectors', () => {
     expect(
       getRelatedEntries(catalog, { ...action, herbIds: ['unknown'] }, 'herbIds'),
     ).toEqual([]);
+    expect(
+      getRelatedEntries(catalog, { ...action, herbIds: ['action:grounding'] }, 'herbIds'),
+    ).toEqual([]);
   });
 
-  it('provides bidirectional links from a herb to its actions and challenges', () => {
+  it('resolves challenge-to-action and action-to-challenge relationships', () => {
+    const challenge = catalog.entries.find(
+      (entry) => entry.id === 'challenge:restless-mind',
+    );
+    const action = catalog.entries.find(
+      (entry) => entry.id === 'action:calming',
+    );
+
+    if (!challenge || !action) {
+      throw new Error('The relationship fixture is incomplete.');
+    }
+
+    expect(getRelatedEntries(catalog, challenge, 'actionIds').map(({ id }) => id))
+      .toEqual(['action:calming', 'action:grounding']);
+    expect(getRelatedEntries(catalog, action, 'challengeIds').map(({ id }) => id))
+      .toEqual(['challenge:restless-mind']);
+  });
+
+  it('provides bidirectional links from herbs to actions and challenges', () => {
     const relatedIds = getAllRelatedEntries(catalog, sampleHerb).map(
       (entry) => entry.id,
     );
@@ -48,5 +69,23 @@ describe('relationship selectors', () => {
     expect(relatedIds).toContain('action:calming');
     expect(relatedIds).toContain('action:grounding');
     expect(relatedIds).toContain('challenge:restless-mind');
+  });
+
+  it('does not duplicate the same entry across relationship groups', () => {
+    const challenge = catalog.entries.find(
+      (entry) => entry.id === 'challenge:restless-mind',
+    );
+
+    if (!challenge) {
+      throw new Error('The relationship fixture is missing its challenge.');
+    }
+
+    const relatedIds = getAllRelatedEntries(catalog, {
+      ...challenge,
+      actionIds: ['action:calming', 'action:calming'],
+      challengeIds: ['challenge:restless-mind'],
+    }).map(({ id }) => id);
+
+    expect(relatedIds.filter((id) => id === 'action:calming')).toHaveLength(1);
   });
 });

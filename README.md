@@ -1,6 +1,6 @@
 # Herb Knowledge Explorer
 
-A planned read-only web app for exploring approved content from an Obsidian herb
+A read-only web app in development for exploring approved content from an Obsidian herb
 reference. Readers will be able to browse health challenges, herbal actions, and
 herbs, following links such as:
 
@@ -12,9 +12,9 @@ healthcare professional.
 
 ## Project status
 
-This project is in the specification and planning stage. The stakeholder
-documents describe the intended MVP; the application, import tool, and
-deployment process have not yet been implemented.
+Implementation is underway. Project setup, the shared catalog foundation, and
+the linked-entry navigation story are implemented; browse lists, the disclaimer,
+the approved-content importer, and deployment remain planned work.
 
 ## MVP scope
 
@@ -26,6 +26,10 @@ deployment process have not yet been implemented.
 - Deploy the read-only web app as a static site.
 - Verify the main browsing flow with Playwright tests in a separate test
   project.
+- Generate a plain-English HTML test report with a separate result for each
+  acceptance scenario.
+- Maintain an illustrated user guide and release notes as customer delivery
+  materials.
 
 The MVP does not include user accounts, editing notes in the app, direct vault
 synchronization, a database, or an interactive graph.
@@ -46,8 +50,9 @@ deployed content is public; do not include private or unapproved notes.
 
 ## Development and deployment
 
-The recommended stack is React, TypeScript, and Vite, with a Node.js/TypeScript
-content import tool and a separate Playwright test project. These are design
-decisions for the MVP, not yet implemented. Setup, test, import, and deployment
-commands will be documented here once the project plan and implementation
-establish them.
+The stack is React, TypeScript, and Vite, with a planned Node.js/TypeScript
+content import tool and a separate Playwright test project. Test, import, and
+deployment commands will be documented here as implementation establishes them.
+The user guide will be maintained as user-facing features are accepted; each
+customer delivery will include the current guide, screenshots, dated or
+versioned release notes, and its Playwright HTML report.
