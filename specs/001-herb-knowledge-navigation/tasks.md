@@ -89,15 +89,15 @@ and open an entry to its correct detail page.
 
 ### Tests for User Story 2
 
-- [ ] T019 [P] [US2] Add Playwright checks for the three browse lists, type filtering, selecting a detail entry, and the empty-list state in `tests/e2e/tests/browse-entry-types.spec.ts`.
+- [X] T019 [P] [US2] Add Playwright checks for the three browse lists, type filtering, selecting a detail entry, and the empty-list state in `tests/e2e/tests/browse-entry-types.spec.ts`.
 
 ### Implementation for User Story 2
 
-- [ ] T020 [US2] Implement the browse-list selector with stable name sorting and type filtering in `src/data/catalog.ts`.
-- [ ] T021 [US2] Implement accessible entry-list and entry-link components in `src/components/EntryList.tsx` and `src/components/EntryLink.tsx`.
-- [ ] T022 [US2] Implement browse views for challenge, action, and herb types, including a clear empty-list state, in `src/pages/BrowsePage.tsx`.
-- [ ] T023 [US2] Add visible navigation to all three browse views in `src/components/PrimaryNavigation.tsx` and connect it to `src/app/App.tsx`.
-- [ ] T024 [US2] Complete the browse-list Playwright scenarios against the local app and synthetic catalog in `tests/e2e/tests/browse-entry-types.spec.ts`.
+- [X] T020 [US2] Implement the browse-list selector with stable name sorting and type filtering in `src/data/catalog.ts`.
+- [X] T021 [US2] Implement accessible entry-list and entry-link components in `src/components/EntryList.tsx` and `src/components/EntryLink.tsx`.
+- [X] T022 [US2] Implement browse views for challenge, action, and herb types, including a clear empty-list state, in `src/pages/BrowsePage.tsx`.
+- [X] T023 [US2] Add visible navigation to all three browse views in `src/components/PrimaryNavigation.tsx` and connect it to `src/app/App.tsx`.
+- [X] T024 [US2] Complete the browse-list Playwright scenarios against the local app and synthetic catalog in `tests/e2e/tests/browse-entry-types.spec.ts`.
 
 **Checkpoint**: Readers can start from a browse list and continue through the US1 relationship
 flow; generate and review this phase's Playwright HTML report.

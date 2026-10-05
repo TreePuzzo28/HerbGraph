@@ -59,6 +59,24 @@ input {
   font-weight: 700;
 }
 
+.primary-navigation ul,
+.primary-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.primary-navigation {
+  margin-block-start: 0.75rem;
+}
+
+.primary-navigation a[aria-current='page'] {
+  font-weight: 700;
+}
+
 @media (min-width: 48rem) {
   .app-shell {
     width: min(100% - 3rem, 72rem);

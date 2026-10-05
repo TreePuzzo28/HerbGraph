@@ -12,9 +12,9 @@ healthcare professional.
 
 ## Project status
 
-Implementation is underway. Project setup, the shared catalog foundation, and
-the linked-entry navigation story are implemented; browse lists, the disclaimer,
-the approved-content importer, and deployment remain planned work.
+Implementation is underway. Project setup, the shared catalog foundation,
+linked-entry navigation, and type-specific browse lists are implemented. The
+educational disclaimer, approved-content importer, and deployment remain planned.
 
 ## MVP scope
 
@@ -43,6 +43,8 @@ deployed content is public; do not include private or unapproved notes.
 
 ## Project documents
 
+- [User guide](docs/user-guide.md)
+- [Release notes](CHANGELOG.md)
 - [Project goals](StakeholderDocuments/ProjectGoals.md)
 - [App features](StakeholderDocuments/AppFeatures.md)
 - [Recommended tech stack](StakeholderDocuments/TechStack.md)

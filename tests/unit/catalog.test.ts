@@ -26,9 +26,20 @@ describe('catalog helpers', () => {
     expect(getEntryById(catalogFixture, 'herb:not-published')).toBeUndefined();
   });
 
-  it('filters entries by type and normalizes the source challenge type', () => {
+  it('filters by type, sorts by name, and normalizes browse route names', () => {
     expect(getEntriesByType(catalogFixture, 'action')).toHaveLength(2);
+    expect(
+      getEntriesByType(catalogFixture, 'herb').map((entry) => entry.name),
+    ).toEqual(['Sample Flower', 'Sample Leaf']);
+    expect(
+      catalogFixture.entries
+        .filter((entry) => entry.type === 'herb')
+        .map((entry) => entry.name),
+    ).toEqual(['Sample Leaf', 'Sample Flower']);
     expect(getEntryType('health_challenge')).toBe('challenge');
+    expect(getEntryType('challenges')).toBe('challenge');
+    expect(getEntryType('actions')).toBe('action');
+    expect(getEntryType('herbs')).toBe('herb');
     expect(getEntryType('unknown')).toBeUndefined();
   });
 

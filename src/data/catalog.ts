@@ -49,16 +49,32 @@ export function getEntriesByType(
   catalog: PublishedCatalog,
   type: EntryType,
 ): CatalogEntry[] {
-  return catalog.entries.filter((entry) => entry.type === type);
+  return catalog.entries
+    .filter((entry) => entry.type === type)
+    .sort(
+      (left, right) =>
+        left.name.localeCompare(right.name, 'en', {
+          sensitivity: 'base',
+        }) || left.id.localeCompare(right.id),
+    );
 }
 
 export function getEntryType(type: string): EntryType | undefined {
-  if (type === 'challenge' || type === 'health_challenge') {
+  if (
+    type === 'challenge' ||
+    type === 'challenges' ||
+    type === 'health_challenge' ||
+    type === 'health-challenges'
+  ) {
     return 'challenge';
   }
 
-  if (type === 'action' || type === 'herb') {
-    return type;
+  if (type === 'action' || type === 'actions') {
+    return 'action';
+  }
+
+  if (type === 'herb' || type === 'herbs') {
+    return 'herb';
   }
 
   return undefined;
