@@ -14,10 +14,10 @@ must be complete before story work starts.
 
 **Purpose**: Initialize the app and the separate browser-test project.
 
-- [ ] T001 Initialize the React, TypeScript, Vite app and root scripts/dependencies in `package.json`, `package-lock.json`, `index.html`, `src/main.tsx`, and `src/vite-env.d.ts`; include React Router, gray-matter, yaml, Zod, and Vitest.
-- [ ] T002 Create the separate Playwright package and scripts in `tests/e2e/package.json`, `tests/e2e/package-lock.json`, and `tests/e2e/playwright.config.ts`; configure a local `webServer` and environment-configurable base URL.
-- [ ] T003 Configure Vite repository base path, TypeScript compiler settings, Vitest, and root ignore rules in `vite.config.ts`, `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`, `vitest.config.ts`, and `.gitignore`.
-- [ ] T004 Create the planned app, script, content, generated-data, unit-test, and e2e-test directory structure, adding `.gitkeep` files only where an otherwise-empty directory must be retained, in `src/`, `scripts/content/`, `content/approved/`, `public/data/`, `tests/unit/`, and `tests/e2e/`.
+- [X] T001 Initialize the React, TypeScript, Vite app and root scripts/dependencies in `package.json`, `package-lock.json`, `index.html`, `src/main.tsx`, and `src/vite-env.d.ts`; include React Router, gray-matter, yaml, Zod, and Vitest.
+- [X] T002 Create the separate Playwright package and scripts in `tests/e2e/package.json`, `tests/e2e/package-lock.json`, and `tests/e2e/playwright.config.ts`; configure a local `webServer` and environment-configurable base URL.
+- [X] T003 Configure Vite repository base path, TypeScript compiler settings, Vitest, and root ignore rules in `vite.config.ts`, `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`, `vitest.config.ts`, and `.gitignore`.
+- [X] T004 Create the planned app, script, content, generated-data, unit-test, and e2e-test directory structure, adding `.gitkeep` files only where an otherwise-empty directory must be retained, in `src/`, `scripts/content/`, `content/approved/`, `public/data/`, `tests/unit/`, and `tests/e2e/`.
 
 ---
 
