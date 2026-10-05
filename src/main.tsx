@@ -1,4 +1,7 @@
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { App } from './app/App';
+import './styles/global.css';
 
 const rootElement = document.getElementById('root');
 
@@ -7,8 +10,7 @@ if (!rootElement) {
 }
 
 createRoot(rootElement).render(
-  <main>
-    <h1>Herb Knowledge Explorer</h1>
-    <p>Application setup is ready.</p>
-  </main>,
+  <StrictMode>
+    <App />
+  </StrictMode>,
 );

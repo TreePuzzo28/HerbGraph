@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "id": "challenge:restless-mind",
+      "type": "challenge",
+      "name": "Restless Mind",
+      "aliases": [],
+      "summary": "A synthetic challenge used only for app tests.",
+      "challengeIds": [],
+      "actionIds": ["action:calming", "action:grounding"],
+      "herbIds": []
+    },
+    {
+      "id": "action:calming",
+      "type": "action",
+      "name": "Calming",
+      "aliases": [],
+      "summary": "A synthetic action used only for app tests.",
+      "challengeIds": ["challenge:restless-mind"],
+      "actionIds": [],
+      "herbIds": ["herb:sample-leaf", "herb:sample-flower"]
+    },
+    {
+      "id": "action:grounding",
+      "type": "action",
+      "name": "Grounding",
+      "aliases": [],
+      "summary": "A second synthetic action used only for app tests.",
+      "challengeIds": ["challenge:restless-mind"],
+      "actionIds": [],
+      "herbIds": ["herb:sample-leaf"]
+    },
+    {
+      "id": "herb:sample-leaf",
+      "type": "herb",
+      "name": "Sample Leaf",
+      "aliases": [],
+      "summary": "A synthetic herb used only for app tests.",
+      "challengeIds": ["challenge:restless-mind"],
+      "actionIds": ["action:calming", "action:grounding"],
+      "herbIds": []
+    },
+    {
+      "id": "herb:sample-flower",
+      "type": "herb",
+      "name": "Sample Flower",
+      "aliases": [],
+      "summary": "A second synthetic herb used only for app tests.",
+      "challengeIds": ["challenge:restless-mind"],
+      "actionIds": ["action:calming"],
+      "herbIds": []
+    }
+  ]
+}

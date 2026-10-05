@@ -28,13 +28,13 @@ required by all user stories.
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T005 Define the entry, relationship, and published-catalog TypeScript types in `src/types/catalog.ts`, matching the exact entry types and required relationship arrays in `data-model.md`.
-- [ ] T006 Create a minimal synthetic, non-medical test catalog with one challenge, two actions, and two herbs in `tests/fixtures/catalog.json`; include bidirectional relationships and do not copy real Obsidian content.
-- [ ] T007 Implement catalog loading, ID lookup, type filtering, and safe not-found results in `src/data/catalog.ts`, using `tests/fixtures/catalog.json` as the initial test input and the published catalog contract.
-- [ ] T008 Implement shared relationship selectors and deduplicated link resolution in `src/data/relationships.ts`, using the published `challengeIds`, `actionIds`, and `herbIds` arrays.
-- [ ] T009 Create the application root, shared route table, and placeholder browse/detail route components in `src/app/App.tsx`, `src/app/router.tsx`, `src/pages/BrowsePage.tsx`, and `src/pages/EntryDetailPage.tsx`.
-- [ ] T010 Add global responsive baseline styles and accessible link/focus defaults in `src/styles/global.css`, and import them from `src/main.tsx`.
-- [ ] T011 Configure the root Vitest setup and shared test utilities in `vitest.config.ts` and `tests/unit/setup.ts`.
+- [X] T005 Define the entry, relationship, and published-catalog TypeScript types in `src/types/catalog.ts`, matching the exact entry types and required relationship arrays in `data-model.md`.
+- [X] T006 Create a minimal synthetic, non-medical test catalog with one challenge, two actions, and two herbs in `tests/fixtures/catalog.json`; include bidirectional relationships and do not copy real Obsidian content.
+- [X] T007 Implement catalog loading, ID lookup, type filtering, and safe not-found results in `src/data/catalog.ts`, using `tests/fixtures/catalog.json` as the initial test input and the published catalog contract.
+- [X] T008 Implement shared relationship selectors and deduplicated link resolution in `src/data/relationships.ts`, using the published `challengeIds`, `actionIds`, and `herbIds` arrays.
+- [X] T009 Create the application root, shared route table, and placeholder browse/detail route components in `src/app/App.tsx`, `src/app/router.tsx`, `src/pages/BrowsePage.tsx`, and `src/pages/EntryDetailPage.tsx`.
+- [X] T010 Add global responsive baseline styles and accessible link/focus defaults in `src/styles/global.css`, and import them from `src/main.tsx`.
+- [X] T011 Configure the root Vitest setup and shared test utilities in `vitest.config.ts` and `tests/unit/setup.ts`.
 
 **Checkpoint**: The app shell, typed catalog, synthetic fixture, and local test runners exist.
 
