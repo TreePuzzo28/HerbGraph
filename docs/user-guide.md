@@ -20,6 +20,15 @@ On an entry detail page, follow the links under Health challenges, Actions, or H
 the published relationships. For example, open an action from a challenge, then choose an herb
 associated with that action. Use the browser's Back button to return to the previous entry.
 
-The shared educational disclaimer and owner-approved publication catalog are planned for later
-implementation phases; do not treat the current synthetic development content as medical
-guidance or approved public content.
+## Educational disclaimer
+
+The educational disclaimer appears in the shared layout on browse and detail pages:
+
+> Educational information only. This content is not medical advice and is not intended to
+> diagnose, treat, cure, or prevent any condition. Consult a qualified healthcare professional
+> about health concerns.
+
+It explains the app's educational purpose; it does not make the synthetic development catalog
+approved health content. Do not use the sample entries as medical guidance.
+
+![The educational disclaimer shown above the herb browse list](./screenshots/educational-disclaimer.png)

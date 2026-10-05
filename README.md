@@ -13,8 +13,8 @@ healthcare professional.
 ## Project status
 
 Implementation is underway. Project setup, the shared catalog foundation,
-linked-entry navigation, and type-specific browse lists are implemented. The
-educational disclaimer, approved-content importer, and deployment remain planned.
+linked-entry navigation, type-specific browse lists, and the shared educational
+disclaimer are implemented. The approved-content importer and deployment remain planned.
 
 ## MVP scope
 

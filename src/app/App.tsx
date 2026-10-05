@@ -4,6 +4,7 @@ import { AppRouter } from './router';
 import { loadCatalog } from '../data/catalog';
 import type { PublishedCatalog } from '../types/catalog';
 import { PrimaryNavigation } from '../components/PrimaryNavigation';
+import { EducationalDisclaimer } from '../components/EducationalDisclaimer';
 
 export function App() {
   const [catalog, setCatalog] = useState<PublishedCatalog>();
@@ -40,6 +41,7 @@ export function App() {
           <p className="app-title">Herb Knowledge Explorer</p>
           <PrimaryNavigation />
         </header>
+        <EducationalDisclaimer />
         {loadError ? (
           <p role="alert">Unable to load app content: {loadError}</p>
         ) : catalog ? (

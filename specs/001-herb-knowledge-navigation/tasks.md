@@ -113,13 +113,13 @@ every route and remains visible while navigating among entries.
 
 ### Tests for User Story 3
 
-- [ ] T025 [P] [US3] Add Playwright checks for the full disclaimer text on each browse type and on an entry detail page in `tests/e2e/tests/educational-disclaimer.spec.ts`.
+- [X] T025 [P] [US3] Add Playwright checks for the full disclaimer text on each browse type and on an entry detail page in `tests/e2e/tests/educational-disclaimer.spec.ts`.
 
 ### Implementation for User Story 3
 
-- [ ] T026 [US3] Add the approved educational disclaimer text and semantic accessible markup in `src/components/EducationalDisclaimer.tsx`.
-- [ ] T027 [US3] Render the disclaimer from the shared app layout on all routes and style it responsively in `src/app/AppLayout.tsx` and `src/styles/global.css`.
-- [ ] T028 [US3] Complete the disclaimer visibility Playwright checks for browse and detail navigation in `tests/e2e/tests/educational-disclaimer.spec.ts`.
+- [X] T026 [US3] Add the approved educational disclaimer text and semantic accessible markup in `src/components/EducationalDisclaimer.tsx`.
+- [X] T027 [US3] Render the disclaimer from the shared app layout on all routes and style it responsively in `src/app/App.tsx` and `src/styles/global.css`.
+- [X] T028 [US3] Complete the disclaimer visibility Playwright checks for browse and detail navigation in `tests/e2e/tests/educational-disclaimer.spec.ts`.
 
 **Checkpoint**: The disclaimer remains visible throughout app navigation; generate and review
 this phase's Playwright HTML report.
