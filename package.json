@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "vite",
     "curator:dev": "vite --config curator/vite.config.ts",
-    "build": "npm run content:import && tsc -b && vite build",
+    "build": "npm run content:import && tsc -b && vite build && npm run build:test-report",
+    "build:test-report": "npm run test:e2e --prefix tests/e2e && mkdir -p dist/test-report && cp -r tests/e2e/playwright-report/* dist/test-report/",
     "preview": "vite preview",
     "typecheck": "tsc -b --pretty",
     "content:import": "tsx scripts/import-content.ts",

@@ -350,6 +350,16 @@ button:disabled {
   margin: 0;
 }
 
+.disclaimer-footer {
+  margin-block-start: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.disclaimer-footer a {
+  color: #245a3b;
+  text-decoration: underline;
+}
+
 .herb-subsection-content {
   white-space: pre-wrap;
 }

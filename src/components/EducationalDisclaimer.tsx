@@ -9,6 +9,11 @@ export function EducationalDisclaimer() {
         not intended to diagnose, treat, cure, or prevent any condition. Consult
         a qualified healthcare professional about health concerns.
       </p>
+      <p className="disclaimer-footer">
+        <a href="/HerbGraph/test-report/" target="_blank" rel="noopener noreferrer">
+          View test report
+        </a>
+      </p>
     </aside>
   );
 }
