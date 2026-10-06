@@ -110,12 +110,12 @@ describe('approved content import', () => {
     );
 
     await expect(
-      importApprovedContent({ inputDir, outputFile }),
+      importApprovedContent({ inputDir, outputFile, mode: 'strict' }),
     ).rejects.toThrow();
     await expect(readFile(outputFile, 'utf8')).resolves.toBe(originalCatalog);
   });
 
-  it('rejects duplicate aliases across records with actionable source names', async () => {
+  it('allows duplicate aliases across records (aliases are metadata only)', async () => {
     const inputDir = await makeTemporaryDirectory();
     const outputDir = await makeTemporaryDirectory();
     const outputFile = join(outputDir, 'catalog.json');
@@ -129,9 +129,10 @@ describe('approved content import', () => {
       );
     }
 
-    await expect(
-      importApprovedContent({ inputDir, outputFile }),
-    ).rejects.toThrow(/duplicate-alias-a\.md.*duplicate-alias-b\.md/i);
+    // Should succeed because we link via title, not aliases
+    const result = await importApprovedContent({ inputDir, outputFile });
+    expect(result.entries.length).toBe(2);
+    expect(result.entries.every(e => e.type === 'herb')).toBe(true);
   });
 
   it('rejects duplicate normalized IDs across distinct filenames', async () => {
@@ -151,7 +152,7 @@ describe('approved content import', () => {
     }
 
     await expect(
-      importApprovedContent({ inputDir, outputFile }),
+      importApprovedContent({ inputDir, outputFile, mode: 'strict' }),
     ).rejects.toThrow(/duplicate entry ID "herb:duplicate-id"/i);
   });
 
@@ -165,7 +166,7 @@ describe('approved content import', () => {
     );
 
     await expect(
-      importApprovedContent({ inputDir, outputFile }),
+      importApprovedContent({ inputDir, outputFile, mode: 'strict' }),
     ).rejects.toThrow(/missing-target|herb\.md/i);
     await expect(readFile(outputFile, 'utf8')).rejects.toMatchObject({
       code: 'ENOENT',
