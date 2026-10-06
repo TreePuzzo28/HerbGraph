@@ -270,17 +270,28 @@ export function ContentImportPage() {
       </label>
       {fileError && <p role="alert">{fileError}</p>}
       {items.length > 0 && (
-        <button
-          type="button"
-          className="secondary-button"
-          onClick={() => {
-            setItems([]);
-            setDownloaded(false);
-            setFileError(undefined);
-          }}
-        >
-          Clear all selections
-        </button>
+        <div className="button-group">
+          <button
+            type="button"
+            className="secondary-button"
+            onClick={() => {
+              setItems(items.map(item => ({ ...item, approved: true })));
+            }}
+          >
+            Approve all
+          </button>
+          <button
+            type="button"
+            className="secondary-button"
+            onClick={() => {
+              setItems([]);
+              setDownloaded(false);
+              setFileError(undefined);
+            }}
+          >
+            Clear all selections
+          </button>
+        </div>
       )}
 
       <label className="validation-toggle">

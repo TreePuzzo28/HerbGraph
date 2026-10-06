@@ -61,6 +61,13 @@ button:disabled {
   color: #245a3b;
 }
 
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-block-start: 1rem;
+}
+
 .content-import > p {
   max-width: 68ch;
 }
