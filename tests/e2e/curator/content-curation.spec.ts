@@ -104,6 +104,26 @@ test('the review lists each missing herb subsection before approval', async ({
 test('multiple sequential file selections accumulate records instead of clearing', async ({
   page,
 }) => {
+  // REGRESSION TEST: This test catches a bug where file selections would clear
+  // instead of accumulate. The bug occurred when users:
+  // 1. Selected herb via "Choose File"
+  // 2. Switched to actions folder and selected action via "Choose File" again
+  //    → herb would disappear
+  // 3. Switched to challenges and selected challenge
+  //    → both herb and action would disappear
+  //
+  // ROOT CAUSE: setItems(uniqueItems) was replacing state instead of appending
+  // with setItems([...items, ...uniqueItems])
+  //
+  // EXISTING TESTS MISSED THIS: The first test in this file calls
+  // setInputFiles([file1, file2, file3]) ONCE with all files, simulating
+  // bulk upload. This doesn't trigger the bug because the state handler is
+  // only called once. Real users click "Choose File" multiple times (sequential
+  // interactions), calling setInputFiles() multiple times, which triggers the bug.
+  //
+  // LESSON: Test progressive/sequential workflows separately from bulk workflows.
+  // See tests/e2e/TESTING-PATTERNS.md for more guidance.
+
   await page.goto('/');
   const fileInput = page.locator('input[type="file"]');
 
