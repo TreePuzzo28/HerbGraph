@@ -166,9 +166,16 @@ export function ContentImportPage() {
     );
 
     const nameCounts = new Map<string, number>();
+    const existingNames = new Set(
+      items.map((item) => item.filename.toLocaleLowerCase('en')),
+    );
     for (const item of parsedItems) {
       const key = item.filename.toLocaleLowerCase('en');
-      nameCounts.set(key, (nameCounts.get(key) ?? 0) + 1);
+      if (existingNames.has(key)) {
+        nameCounts.set(key, 2);
+      } else {
+        nameCounts.set(key, (nameCounts.get(key) ?? 0) + 1);
+      }
     }
     const collisions = [...nameCounts.entries()]
       .filter(([, count]) => count > 1)
@@ -179,6 +186,10 @@ export function ContentImportPage() {
           )?.filename ?? key,
       );
     const seenNames = new Set<string>();
+    for (const item of items) {
+      const key = item.filename.toLocaleLowerCase('en');
+      seenNames.add(key);
+    }
     const uniqueItems = parsedItems.filter((item) => {
       const key = item.filename.toLocaleLowerCase('en');
       if (
@@ -190,7 +201,7 @@ export function ContentImportPage() {
       seenNames.add(key);
       return true;
     });
-    setItems(uniqueItems);
+    setItems([...items, ...uniqueItems]);
     if (collisions.length > 0) {
       setFileError(
         `Duplicate filename(s) not added: ${collisions.join(', ')}. Select files with unique names so imported entry IDs stay predictable.`,
@@ -258,6 +269,19 @@ export function ContentImportPage() {
         />
       </label>
       {fileError && <p role="alert">{fileError}</p>}
+      {items.length > 0 && (
+        <button
+          type="button"
+          className="secondary-button"
+          onClick={() => {
+            setItems([]);
+            setDownloaded(false);
+            setFileError(undefined);
+          }}
+        >
+          Clear all selections
+        </button>
+      )}
 
       <label className="validation-toggle">
         <input
