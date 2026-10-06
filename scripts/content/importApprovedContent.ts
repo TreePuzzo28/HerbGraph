@@ -8,11 +8,13 @@ import { resolveRelationships } from './resolveRelationships';
 export interface ImportOptions {
   inputDir: string;
   outputFile: string;
+  mode?: 'strict' | 'lenient' | 'auto-stub';
 }
 
 export async function importApprovedContent({
   inputDir,
   outputFile,
+  mode = 'auto-stub',
 }: ImportOptions): Promise<PublishedCatalog> {
   const sourceFiles = (await readdir(inputDir, { withFileTypes: true }))
     .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith('.md'))
@@ -32,7 +34,7 @@ export async function importApprovedContent({
     throw new Error(parseErrors.join('\n'));
   }
 
-  const catalog = resolveRelationships(records);
+  const catalog = resolveRelationships(records, { mode, inputDir });
   await mkdir(dirname(outputFile), { recursive: true });
   const temporaryPath = `${outputFile}.${randomUUID()}.tmp`;
   try {

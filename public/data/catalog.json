@@ -1,4 +1,652 @@
 {
   "schemaVersion": 1,
-  "entries": []
+  "entries": [
+    {
+      "id": "abdominal-cramping",
+      "type": "challenge",
+      "name": "Abdominal Cramping",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:basil"
+      ]
+    },
+    {
+      "id": "action:antidepressant",
+      "type": "action",
+      "name": "Antidepressant",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": []
+    },
+    {
+      "id": "action:carminative",
+      "type": "action",
+      "name": "Carminative",
+      "challengeIds": [
+        "challenge:bloating",
+        "challenge:gas"
+      ],
+      "actionIds": [],
+      "herbIds": [
+        "herb:basil",
+        "herb:german-chamomile",
+        "herb:lavender",
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "action:nervine",
+      "type": "action",
+      "name": "Nervine",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:basil",
+        "herb:german-chamomile",
+        "herb:lavender",
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "action:tonic",
+      "type": "action",
+      "name": "Tonic",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": []
+    },
+    {
+      "id": "anti-inflammatory",
+      "type": "action",
+      "name": "Anti-inflammatory",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:german-chamomile"
+      ]
+    },
+    {
+      "id": "antimicrobial",
+      "type": "action",
+      "name": "Antimicrobial",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:basil",
+        "herb:lavender"
+      ]
+    },
+    {
+      "id": "antispasmodic",
+      "type": "action",
+      "name": "Antispasmodic",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:basil",
+        "herb:german-chamomile",
+        "herb:lavender",
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "antiviral",
+      "type": "action",
+      "name": "Antiviral",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "anxiety",
+      "type": "challenge",
+      "name": "Anxiety",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lavender"
+      ]
+    },
+    {
+      "id": "anxiolytic",
+      "type": "action",
+      "name": "Anxiolytic",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [
+        "challenge:nervous-tension"
+      ],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lavender",
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "aromatic",
+      "type": "action",
+      "name": "Aromatic",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [
+        "challenge:gas"
+      ],
+      "actionIds": [],
+      "herbIds": []
+    },
+    {
+      "id": "bitter",
+      "type": "action",
+      "name": "Bitter",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [
+        "challenge:bloating",
+        "challenge:gas"
+      ],
+      "actionIds": [],
+      "herbIds": [
+        "herb:german-chamomile"
+      ]
+    },
+    {
+      "id": "challenge:bloating",
+      "type": "challenge",
+      "name": "Bloating",
+      "aliases": [
+        "Abdominal Distension",
+        "Abdominal Fullness"
+      ],
+      "challengeIds": [],
+      "actionIds": [
+        "action:carminative",
+        "bitter",
+        "prokinetic",
+        "spasmolytic"
+      ],
+      "herbIds": [
+        "herb:basil"
+      ]
+    },
+    {
+      "id": "challenge:gas",
+      "type": "challenge",
+      "name": "Gas",
+      "aliases": [
+        "Flatulence",
+        "Intestinal Gas",
+        "Meteorism"
+      ],
+      "challengeIds": [],
+      "actionIds": [
+        "action:carminative",
+        "aromatic",
+        "bitter",
+        "spasmolytic"
+      ],
+      "herbIds": [
+        "herb:basil"
+      ]
+    },
+    {
+      "id": "challenge:nervous-tension",
+      "type": "challenge",
+      "name": "Nervous Tension",
+      "aliases": [
+        "Nervous Agitation",
+        "Restlessness",
+        "Tension"
+      ],
+      "challengeIds": [],
+      "actionIds": [
+        "anxiolytic",
+        "nervine-relaxant",
+        "sedative",
+        "spasmolytic"
+      ],
+      "herbIds": [
+        "herb:basil",
+        "herb:german-chamomile"
+      ]
+    },
+    {
+      "id": "cold-sores--hsv-1-",
+      "type": "challenge",
+      "name": "Cold Sores (HSV-1)",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "diaphoretic",
+      "type": "action",
+      "name": "Diaphoretic",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:basil"
+      ]
+    },
+    {
+      "id": "emmenagogue",
+      "type": "action",
+      "name": "Emmenagogue",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:basil"
+      ]
+    },
+    {
+      "id": "galactagogue",
+      "type": "action",
+      "name": "Galactagogue",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:basil"
+      ]
+    },
+    {
+      "id": "grief",
+      "type": "challenge",
+      "name": "Grief",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "herb:basil",
+      "type": "herb",
+      "name": "Basil",
+      "challengeIds": [
+        "abdominal-cramping",
+        "challenge:bloating",
+        "challenge:gas",
+        "challenge:nervous-tension",
+        "mental-fatigue",
+        "sluggish-digestion"
+      ],
+      "actionIds": [
+        "action:carminative",
+        "action:nervine",
+        "antimicrobial",
+        "antispasmodic",
+        "diaphoretic",
+        "emmenagogue",
+        "galactagogue"
+      ],
+      "herbIds": [],
+      "apothecaryApplications": {
+        "bestPreparations": "To get the absolute maximum medicinal value out of basil's volatile and heat-sensitive nature, you want to focus on **fresh, cold, or highly insulated preparations**.\n\nBecause basil is highly aromatic and prone to rapid browning (oxidation), these four practical methods are the gold standard for preserving its carminative and nervine power:\n\n\nVegetable glycerin is arguably the single best solvent for fresh basil leaves.\n\n- **Why it's the best:** Glycerin acts like a blanket, locking in the volatile oils and preventing the leaves from oxidizing and turning black. Because it requires zero heat, 100% of the bright, nerve-soothing aroma is preserved.\n    \n- **The Practical Application:** Grind fresh basil leaves directly into vegetable glycerin using a blender or mortar and pestle. Let it steep for 4 to 6 weeks, then strain. The resulting sweet, aromatic syrup is an incredible, alcohol-free \"stress drop\" to take directly on the tongue for acute anxiety or a tight, nervous stomach.\n    \n\nInfusing basil into an organic carrier fat like extra virgin olive oil is a powerhouse delivery system for its anti-spasmodic properties.\n\n- **Why it's the best:** Basil’s active compounds are highly lipophilic (fat-loving). Furthermore, traditional preparations like a rich, pestle-and-mortar pesto aren't just food—they are highly effective medicine. The fats coat the digestive tract while the basil relaxes the smooth muscles of the gut.\n    \n- **The Practical Application:** To prevent the fresh leaves from introducing water to your oil (which causes mold), blanch the fresh leaves in boiling water for exactly 5 seconds, immediately plunge them into an ice bath, pat them completely dry, and then blend them directly into your olive oil. Strain through cheesecloth for a shelf-stable, vibrantly green medicinal oil.\n    \n\nIf you want to enjoy basil as a warm, comforting tea to relieve bloating or gas after a heavy meal, you can use fresh or gently dried leaves, but you must follow the rule of the lid.\n\n- **Why it's the best:** Water quickly extracts basil's carminative properties, but a hot mug will instantly evaporate the medicinal oils into the room if left open.\n    \n- **The Practical Application:** Place your basil leaves in a mug, pour hot (not boiling) water over them, and **immediately cover the mug with a saucer or lid**. Let it steep for only **5 to 10 minutes**. When you take the lid off, quickly flip it over and let the condensed steam droplets drop right back into your cup—that condensation is pure volatile medicine!\n    \n\nInfusing fresh basil into raw apple cider vinegar (and optional raw honey to create an oxymel) creates a beautiful, shelf-stable, warming remedy.\n\n- **Why it's the best:** Vinegar extracts both the mineral content and the bright aromatics of the plant beautifully while completely preventing browning.\n    \n- **The Practical Application:** Pack a clean jar full of chopped fresh basil leaves, cover it completely with raw apple cider vinegar, and seal it with a plastic lid (vinegar rusts metal lids). Let it sit for 2 to 4 weeks. Use a splash of this in warm water before meals to physically fire up a sluggish or cold digestive system.",
+        "preparationNotes": "**Drying basil is a classic beginner's trap.** Because its medicine is tied almost entirely to those highly volatile, delicate oils, the process of dehydration completely strips the plant. By the time the leaf is crumbly and dry, those oils have evaporated into the room, leaving behind nothing but a jar of gray-green chaff that tastes like dust and has lost virtually all of its carminative and nervine potency.\n\n**Other Tips**\n\n- **The Problem:** If you try to make a gorgeous, bright green basil-infused oil or paste, it almost always turns a muddy, unappealing brown within 24 hours due to rapid oxidation.\n    \n- **The Secret:** Before infusing fresh basil into oil or honey, **blanch it**. Bring a pot of water to a rolling boil, drop the whole basil leaves in for exactly **5 to 10 seconds** (just until they turn neon green), then instantly flash-cool them in a bowl of ice water. Squeeze out every single drop of water in a kitchen towel until they are bone dry, then blend into your oil. This heat-shock permanently deactivates the browning enzyme, locking in a stunning, vibrant green color and fresh flavor that lasts for months.\n\n- **The Problem:** High-speed metal blender blades slice through plant tissue with friction that generates localized heat, which can scorch and evaporate delicate volatile oils.\n    \n- **The Secret:** For true medicinal potency, grind basil the old-fashioned way using a heavy stone mortar and pestle with a coarse pinch of sea salt. The heavy, rolling, crushing action physically shears open the volatile oil glands without generating heat, pushing the medicine directly into the surrounding juices or oil. There is a tangible therapeutic difference in a hand-crushed basil remedy versus a machine-blended one.\n\n\n- **The Secret:** When brewing a covered basil tea, the most potent medicine doesn't actually stay down in the water—it rises with the steam and collects as tiny water droplets on the underside of your lid. That condensed film is pure, highly concentrated volatile oil. When you lift the lid to drink, **always tilt it vertically over the mug** so that every single drop runs back into your tea. Never shake the lid off onto the counter, or you are literally throwing away the best part of your medicine.\n\n- **The Secret:** If you find the taste of a hot basil tea a bit too pungent or green, turn it into an **Oxymel** (an ancient preparation combining 1 part herbal vinegar with 1 part raw honey). Infuse fresh basil in raw apple cider vinegar for two weeks, strain it, and mix it half-and-half with raw honey. The acidity of the vinegar cuts the cloying sweetness of the honey, and the honey perfectly blankets the sharp bite of the basil. It is incredibly shelf-stable and makes a fantastic, instant, throat-soothing syrup for a nervous cough or a spastic stomach ache.\n\n- **The Secret:** If you are making a fresh culinary medicine like pesto or an herbal paste to store in the fridge, always include fresh garlic and a healthy pinch of sea salt. Beyond flavor, garlic is a powerful antimicrobial and salt is a natural dehydrator. Together, they lower the water activity of the fresh leaves, acting as natural preservatives that give your fresh basil preparations an extra week or two of life before spoilage.",
+        "keyChemistryMechanics": "- **The Practical Mechanic:** Basil is packed with delicate, easily evaporated aromatic oils.\n    \n- **Apothecary Impact:** This is the entire reason you **never boil it** or leave the tea mug uncovered. If you can smell basil across the room while cooking or brewing, it means your medicine is escaping into the air instead of staying in your cup. Always use covered infusions or cold/fresh preparations (like fresh glycerites or pesto) to lock those oils in.\n\n- **The Practical Mechanic:** Its active compounds are highly lipophilic (fat-loving) and dissolve beautifully in solvents other than plain water.\n    \n- **Apothecary Impact:** While a covered tea is great, basil truly shines when infused into **extra virgin olive oil, apple cider vinegar, or fresh glycerin**. This makes it an incredibly functional culinary medicine—using a heavy hand with fresh basil in a traditional pestle-and-mortar pesto isn't just delicious, it is a highly effective delivery system for its antispasmodic and carminative benefits.\n\n- **The Practical Mechanic:** As soon as basil leaves are bruised, cut, or exposed to air, enzymes inside the plant rapidly oxidize its beneficial compounds, turning the leaves brown or black.\n    \n- **Apothecary Impact:** When harvesting for medicine, work quickly. If you are making an infused oil or a fresh plant glycerite, submerge the leaves completely under your liquid menstruum immediately after chopping or bruising them. Blending or chopping the herb _directly inside_ the liquid or oil blankets it from oxygen and preserves its vibrant green color and maximum potency.\n\n- **The Practical Mechanic:** Beneath its bright, sweet aromatic profile lies a subtle undercurrent of bitter compounds and tannins.\n    \n- **Apothecary Impact:** To keep your medicinal teas tasting smooth and uplifting, keep your steep times brief—around **5 to 10 minutes** under a lid is plenty. If you let a basil tea sit for 20+ minutes, those bitter tannins will heavily extract, overriding the sweet, relaxing aromatics and making the tea unpleasantly astringent.",
+        "safetyContraindications": "- **The Contraindication:** Avoid high, concentrated medicinal doses (such as therapeutic extracts or essential oils) during pregnancy.\n    \n- **The Reason:** As a mild **emmenagogue**, basil stimulates blood flow to the pelvic region and uterus. While eating a bowl of pesto or a sprig of fresh basil is perfectly safe, consuming therapeutic amounts can potentially stimulate uterine contractions.\n    \n\n\n- **The Contraindication:** Discontinue medicinal use of basil at least two weeks before any scheduled surgery.\n    \n- **The Reason:** Basil contains compounds (including eugenol) that can mildly slow down blood clotting. Combining high doses of basil with blood-thinning medications (like Warfarin, Aspirin, or Plavix) can theoretically increase the risk of bruising and bleeding.\n    \n\n\n- **The Caution:** Monitor blood sugar closely if you are prone to hypoglycemia or are taking insulin/diabetes medications.\n    \n- **The Reason:** Animal and clinical studies have shown that holy basil (Tulsi) and sweet basil can lower fasting blood glucose levels. If you are already taking medications to lower your blood sugar, medicinal doses of basil could cause it to drop too low.\n    \n\n\n- **The Contraindication:** **Never ingest basil essential oil**, and always heavily dilute it for topical use.\n    \n- **The Reason:** Sweet basil essential oil contains a high concentration of _estragole_ (methyl chavicol). While perfectly safe in the small, natural amounts found in whole leaves or standard glycerites, estragole isolated in high, pure essential oil concentrations can be toxic to the liver and irritating to mucous membranes."
+      }
+    },
+    {
+      "id": "herb:german-chamomile",
+      "type": "herb",
+      "name": "German Chamomile",
+      "aliases": [
+        "True Chamomile",
+        "Wild Chamomile",
+        "Scented Mayweed"
+      ],
+      "challengeIds": [
+        "challenge:nervous-tension",
+        "infant-colic-teething",
+        "inflamed-skin-eczema",
+        "insomnia",
+        "stress-induced-ibs-gastritis"
+      ],
+      "actionIds": [
+        "action:carminative",
+        "action:nervine",
+        "anti-inflammatory",
+        "antispasmodic",
+        "bitter",
+        "mild-sedative",
+        "vulnerary"
+      ],
+      "herbIds": [],
+      "apothecaryApplications": {
+        "keyChallengesAddressed": "*   Nervous System Irritation: Acute anxiety, racing thoughts, restless insomnia, and frazzled \"over-tired\" exhaustion.\n*   Gastrointestinal Somatization: Stress-induced IBS, nervous stomach, acid reflux, gastritis, and infant colic.\n*   Cutaneous Inflammation: Superficial burns, hives, dry eczema, diaper rash, and slow-healing skin wounds.",
+        "bestPreparations": "*   **The Deep Blue Covered Infusion:** Chamomile is too often treated as a weak, watery grocery-store tea, but a true medicinal infusion is incredibly robust. Steep 2 tablespoons of dried flowers in a mug of boiling water for **at least 15 minutes under a tight lid**. When you remove the lid, you will notice a slight oily film or a tiny hint of blue-green color; these are the therapeutic essential oils. \n*   **Soothing Infused Oil & Salves:** Because chamomile’s anti-inflammatory components dissolve beautifully in fat, infusing dried flowers into organic jojoba or olive oil yields a premier topical medicine. Use this oil directly or thicken it with beeswax into a salve for hot, dry skin conditions, eczema flares, or minor burns.\n*   **Gentle Sweet Glycerite:** For children, infants, or those avoiding alcohol, a chamomile glycerite (using vegetable glycerin) captures the sweet, apple-like carminative properties beautifully, making it an exceptional tool for teething, colic, or bedtime restlessness.",
+        "preparationNotes": "> [!info] The \"Bitter\" Steeping Secret\n> Chamomile has a fascinating dual personality based entirely on how long you steep it. \n> * **The 5-Minute Steep:** A short, gentle steep extracts the sweet, aromatic volatile oils, acting primarily as a soothing, calming nervine to ease anxiety and promote sleep.\n> * **The 20+ Minute Steep:** A long, deep steep pulls out the heavier, bitter glycosides (*chamomillic acid*). The tea will shift from sweet to noticeably bitter and earthy. This long-steeped version is an exceptional, physical **digestive bitter** that triggers bile production, targets gut inflammation, and stops painful gas or stomach spasms.",
+        "keyChemistryMechanics": "*   **The Physical De-Inflamer (Chamazulene):** Chamomile contains a high density of a sesquiterpene called *matricin*. When subjected to steam distillation or hot water extraction, matricin physically transforms into **chamazulene**, a striking, deep-blue compound that acts as a powerful anti-inflammatory by inhibiting the pathways that trigger tissue swelling and redness.\n*   **The Smooth Muscle Relaxant:** The flavonoid **apigenin** binds directly to central benzodiazepine receptors in the brain, inducing a physical, systemic state of calm. Simultaneously, apigenin relaxes the smooth muscle linings of the gastrointestinal tract, physically halting painful intestinal cramps, gas bubbles, and stress-induced stomach spasms.",
+        "safetyContraindications": "> [!warning] ⚠️ Safety & Contraindications\n> * **Ragweed/Asteraceae Allergies:** Because chamomile belongs to the Asteraceae (sunflower/ragweed) family, individuals with severe environmental allergies to ragweed, marigolds, or daisies should use chamomile with caution, as it can occasionally trigger contact dermatitis or allergic symptoms in highly sensitive people.\n> * **Sedative Synergy:** Due to its physical ability to promote deep relaxation and ease central nervous system tension, use chamomile with caution alongside pharmaceutical sedatives, sleep medications, or pre-surgery anesthesia, as it can amplify their effects."
+      }
+    },
+    {
+      "id": "herb:lavender",
+      "type": "herb",
+      "name": "Lavender",
+      "aliases": [
+        "English Lavender",
+        "True Lavender",
+        "Garden Lavender"
+      ],
+      "challengeIds": [
+        "anxiety",
+        "indigestion",
+        "mild-burns",
+        "nervous-insomnia",
+        "skin-irritations",
+        "tension-headaches"
+      ],
+      "actionIds": [
+        "action:carminative",
+        "action:nervine",
+        "antimicrobial",
+        "antispasmodic",
+        "anxiolytic",
+        "vulnerary"
+      ],
+      "herbIds": [],
+      "apothecaryApplications": {
+        "keyChallengesAddressed": "*   Nervous System Overdrive: Chronic anxiety, racing thoughts, nervous insomnia, and tension headaches.\n*   Gastrointestinal Spasms: Nervous stomach, bloating, and gas related to stress.\n*   Skin Alterations: Mild burns, sunburns, insect bites, and superficial wound healing.\n*   Esophageal Spasms:  rub it on your throat and and upper chest near the “v” of your collar bone.  Jump to try fix the spasm.  \n* Headache rub essential oil on temples.",
+        "bestPreparations": "*   **Infused Oil & Salves:** Because lavender’s volatile compounds are highly lipophilic, they transfer beautifully into stable fats like organic olive or jojoba oil. A cold-infused lavender oil or a beeswax-hardened salve is an indispensable topical tool for skin regeneration, burns, or rubbing onto the temples during a headache.\n*   **High-Proof Tincture:** To capture both its aromatic oils and its bitter, digestive compounds, use a fresh or recently dried plant tincture using 80 to 100-proof alcohol. A few drops in a small glass of water works rapidly to settle sudden panic or acute indigestion.",
+        "preparationNotes": "> [!info] The \"Less is More\" Dosing Secret\n> Lavender is a paradox: in small, gentle doses, it is an incredibly soothing, grounding nervine that sedates a frantic mind. However, **if you over-concentrate it**, lavender shifts into a stimulant. A tea made with too many buds or steeped for too long can trigger agitation, restlessness, and a soapy, perfumed flavor that irritates the stomach. Keep your doses light and your steep times to a brief **5–7 minutes** under a tight lid.",
+        "keyChemistryMechanics": "*   **The Neurotransmitter Mechanic:** Lavender's primary volatile constituents, **linalool** and **linalyl acetate**, are rapidly absorbed through inhalation or ingestion. They physically interact with the central nervous system by modulating voltage-gated calcium channels, promoting an increase in parasympathetic activity (the \"rest and digest\" state) and easing neuromuscular tension.\n*   **The Tissue Regenerator:** Its rich terpene profile acts as a local anesthetic and antiseptic, physically cooling heat in a burn and speeding up cellular turnover in damaged skin.",
+        "safetyContraindications": "> [!warning] ⚠️ Safety & Contraindications\n> * **Internal Caution:** Generally recognized as highly safe, but excessive internal use of concentrated extracts can cause mild gastrointestinal upset or nausea due to the high intensity of the aromatic essential oils.\n> * **Topical Sensitivity:** Always patch-test lavender preparations on a small area of skin before widespread use, as some individuals can develop a mild contact dermatitis to highly concentrated linalool."
+      }
+    },
+    {
+      "id": "herb:lemon-balm",
+      "type": "herb",
+      "name": "Lemon Balm",
+      "aliases": [
+        "Sweet Balm",
+        "Melissa",
+        "Balm Mint"
+      ],
+      "challengeIds": [
+        "cold-sores--hsv-1-",
+        "grief",
+        "mild-depression",
+        "nervous-anxiety",
+        "nervous-stomach-ibs",
+        "stress-induced-palpitations"
+      ],
+      "actionIds": [
+        "action:carminative",
+        "action:nervine",
+        "antispasmodic",
+        "antiviral",
+        "anxiolytic",
+        "mild-sedative",
+        "trophorestorative"
+      ],
+      "herbIds": [],
+      "apothecaryApplications": {
+        "keyChallengesAddressed": "*   Nervous System Exhaustion: Chronic stress, panic attacks, situational anxiety, grief, and nervous insomnia.\n*   Somatized Stress: Nervous stomach, digestive spasms, IBS flare-ups, and stress-induced heart palpitations.\n*   Viral Extremities: Acute outbreaks of the Herpes Simplex Virus (cold sores).",
+        "bestPreparations": "*   **The Gladdening Covered Infusion:** Lemon balm is famous historically as an herb to \"drive away sadness.\" Steep a generous handful of dried or fresh leaves in boiling water for 15 minutes. Crucially, **keep a tight lid on the mug** to trap the steam, which holds the volatile monoterpenes. Drinking this warm tea relaxes a tight, anxious chest and settles an upset stomach.\n*   **Fresh Plant Tincture:** The true, bright, uplifting lemon flavor of this plant is heavily altered during the drying process. To capture its complete chemical signature, pack a jar tight with *fresh, finely chopped leaves* and submerge them in a high-proof alcohol (95-proof or higher) for 4 weeks. \n*   **Topical Cold Sore Wash:** Lemon balm has profound, direct antiviral properties against topically presenting viruses. Infuse the herb into olive oil to make a soothing salve, or apply a cooled, concentrated decoction directly to a brewing cold sore to drastically reduce healing time.",
+        "preparationNotes": "> [!info] The \"Gladdening\" Fresh Secret\n> If you are using lemon balm specifically for its uplifting, anti-depressant, and spirit-lifting qualities, **always prioritize the fresh plant over the dried herb**. The volatile compounds responsible for its distinct citrus aroma and rapid emotional grounding evaporate quickly during drying. If you must use dried lemon balm for tea, double the amount of herb used and ensure your brewing vessel is tightly sealed to capture every remaining drop of its medicine.",
+        "keyChemistryMechanics": "*   **The GABA Mechanic:** Lemon balm contains high concentrations of **rosmarinic acid**, which has been shown to inhibit *GABA transaminase*—the enzyme responsible for breaking down GABA in the brain. By keeping more GABA available, lemon balm physically slows down racing thoughts, relaxes the central nervous system, and eases acute anxiety.\n*   **The Antiviral Shield:** Polyphenolic compounds and tannins physically bind to viral protein receptors, preventing viruses (specifically HSV-1) from successfully attaching to and penetrating healthy human host cells.",
+        "safetyContraindications": "> [!warning] ⚠️ Safety & Contraindications\n> * **Thyroid Caution (Hypothyroidism):** Lemon balm can inhibit the binding of Thyroid Stimulating Hormone (TSH) to its receptors and decrease peripheral conversion of T4 to T3. If you suffer from an underactive thyroid (hypothyroidism) or are taking thyroid medication, avoid large, daily medicinal doses of lemon balm. It is, conversely, excellent for those with *hyper*thyroidism (Graves' disease).\n> * **Sedative Synergy:** Because of its natural, gentle sedative qualities, use lemon balm with caution if you are taking prescription pharmaceutical sedatives or sleep medications, as it can amplify their relaxing effects."
+      }
+    },
+    {
+      "id": "indigestion",
+      "type": "challenge",
+      "name": "Indigestion",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lavender"
+      ]
+    },
+    {
+      "id": "infant-colic-teething",
+      "type": "challenge",
+      "name": "Infant Colic/Teething",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:german-chamomile"
+      ]
+    },
+    {
+      "id": "inflamed-skin-eczema",
+      "type": "challenge",
+      "name": "Inflamed Skin/Eczema",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:german-chamomile"
+      ]
+    },
+    {
+      "id": "insomnia",
+      "type": "challenge",
+      "name": "Insomnia",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:german-chamomile"
+      ]
+    },
+    {
+      "id": "mental-fatigue",
+      "type": "challenge",
+      "name": "Mental Fatigue",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:basil"
+      ]
+    },
+    {
+      "id": "mild-burns",
+      "type": "challenge",
+      "name": "Mild Burns",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lavender"
+      ]
+    },
+    {
+      "id": "mild-depression",
+      "type": "challenge",
+      "name": "Mild Depression",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "mild-sedative",
+      "type": "action",
+      "name": "Mild Sedative",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:german-chamomile",
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "nervine-relaxant",
+      "type": "action",
+      "name": "Nervine Relaxant",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [
+        "challenge:nervous-tension"
+      ],
+      "actionIds": [],
+      "herbIds": []
+    },
+    {
+      "id": "nervous-anxiety",
+      "type": "challenge",
+      "name": "Nervous Anxiety",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "nervous-insomnia",
+      "type": "challenge",
+      "name": "Nervous Insomnia",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lavender"
+      ]
+    },
+    {
+      "id": "nervous-stomach-ibs",
+      "type": "challenge",
+      "name": "Nervous Stomach/IBS",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "prokinetic",
+      "type": "action",
+      "name": "Prokinetic",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [
+        "challenge:bloating"
+      ],
+      "actionIds": [],
+      "herbIds": []
+    },
+    {
+      "id": "sedative",
+      "type": "action",
+      "name": "Sedative",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [
+        "challenge:nervous-tension"
+      ],
+      "actionIds": [],
+      "herbIds": []
+    },
+    {
+      "id": "skin-irritations",
+      "type": "challenge",
+      "name": "Skin Irritations",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lavender"
+      ]
+    },
+    {
+      "id": "sluggish-digestion",
+      "type": "challenge",
+      "name": "Sluggish Digestion",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:basil"
+      ]
+    },
+    {
+      "id": "spasmolytic",
+      "type": "action",
+      "name": "Spasmolytic",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [
+        "challenge:bloating",
+        "challenge:gas",
+        "challenge:nervous-tension"
+      ],
+      "actionIds": [],
+      "herbIds": []
+    },
+    {
+      "id": "stress-induced-ibs-gastritis",
+      "type": "challenge",
+      "name": "Stress-Induced IBS/Gastritis",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:german-chamomile"
+      ]
+    },
+    {
+      "id": "stress-induced-palpitations",
+      "type": "challenge",
+      "name": "Stress-Induced Palpitations",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "tension-headaches",
+      "type": "challenge",
+      "name": "Tension Headaches",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lavender"
+      ]
+    },
+    {
+      "id": "trophorestorative",
+      "type": "action",
+      "name": "Trophorestorative",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:lemon-balm"
+      ]
+    },
+    {
+      "id": "vulnerary",
+      "type": "action",
+      "name": "Vulnerary",
+      "summary": "**Status:** Under construction — add real content later.",
+      "challengeIds": [],
+      "actionIds": [],
+      "herbIds": [
+        "herb:german-chamomile",
+        "herb:lavender"
+      ]
+    }
+  ]
 }
