@@ -78,10 +78,10 @@ export function validateCuratedRelationships(
       .replace(/\.md$/i, '')
       .replace(/[_-]+/g, ' ')
       .trim();
+    // Only check title and filename for uniqueness (we link via title, not aliases)
     for (const label of new Set([
       record.title,
       filenameTitle,
-      ...(record.aliases ?? []),
     ])) {
       const key = normalize(label);
       const owners = byLabel.get(key) ?? [];
