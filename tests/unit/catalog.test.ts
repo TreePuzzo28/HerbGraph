@@ -1,0 +1,110 @@
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { describe, expect, it, vi } from 'vitest';
+import {
+  getEntriesByType,
+  getEntryById,
+  getEntryType,
+  loadCatalog,
+  parseCatalog,
+} from '../../src/data/catalog';
+
+const fixturePath = resolve(process.cwd(), 'tests/fixtures/catalog.json');
+const catalogFixture = parseCatalog(
+  JSON.parse(await readFile(fixturePath, 'utf8')),
+);
+
+describe('catalog helpers', () => {
+  it('parses the synthetic test catalog', () => {
+    expect(parseCatalog(catalogFixture)).toEqual(catalogFixture);
+  });
+
+  it('finds entries by id and safely returns undefined when missing', () => {
+    expect(getEntryById(catalogFixture, 'herb:sample-leaf')?.name).toBe(
+      'Sample Leaf',
+    );
+    expect(getEntryById(catalogFixture, 'herb:not-published')).toBeUndefined();
+  });
+
+  it('filters by type, sorts by name, and normalizes browse route names', () => {
+    expect(getEntriesByType(catalogFixture, 'action')).toHaveLength(2);
+    expect(
+      getEntriesByType(catalogFixture, 'herb').map((entry) => entry.name),
+    ).toEqual(['Sample Flower', 'Sample Leaf']);
+    expect(
+      catalogFixture.entries
+        .filter((entry) => entry.type === 'herb')
+        .map((entry) => entry.name),
+    ).toEqual(['Sample Leaf', 'Sample Flower']);
+    expect(getEntryType('health_challenge')).toBe('challenge');
+    expect(getEntryType('challenges')).toBe('challenge');
+    expect(getEntryType('actions')).toBe('action');
+    expect(getEntryType('herbs')).toBe('herb');
+    expect(getEntryType('unknown')).toBeUndefined();
+  });
+
+  it('loads and validates the published catalog', async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(JSON.stringify(catalogFixture), { status: 200 }),
+    );
+
+    await expect(loadCatalog(fetcher)).resolves.toEqual(catalogFixture);
+    expect(fetcher).toHaveBeenCalledWith(
+      expect.stringMatching(/\/data\/catalog\.json$/),
+    );
+  });
+
+  it('reports a failed catalog request instead of hiding it', async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(null, { status: 503 }),
+    );
+
+    await expect(loadCatalog(fetcher)).rejects.toThrow(
+      'Could not load the published catalog (503).',
+    );
+  });
+
+  it('rejects catalog fields outside the published allowlist', () => {
+    expect(() =>
+      parseCatalog({
+        ...catalogFixture,
+        unexpected: true,
+      }),
+    ).toThrow();
+  });
+
+  it('accepts apothecary subsections only for herbs and rejects unknown fields', () => {
+    const herb = catalogFixture.entries.find(({ type }) => type === 'herb');
+    const action = catalogFixture.entries.find(({ type }) => type === 'action');
+    expect(herb?.apothecaryApplications?.bestPreparations).toContain(
+      'Synthetic preparation',
+    );
+
+    expect(() =>
+      parseCatalog({
+        ...catalogFixture,
+        entries: [
+          {
+            ...action,
+            apothecaryApplications: { bestPreparations: 'Not allowed here.' },
+          },
+        ],
+      }),
+    ).toThrow(/only valid on herb/i);
+
+    expect(() =>
+      parseCatalog({
+        ...catalogFixture,
+        entries: [
+          {
+            ...herb,
+            apothecaryApplications: {
+              ...herb?.apothecaryApplications,
+              unapprovedHeading: 'Not allowed.',
+            },
+          },
+        ],
+      }),
+    ).toThrow();
+  });
+});

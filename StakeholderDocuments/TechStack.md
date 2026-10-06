@@ -8,6 +8,9 @@ The MVP is a read-only web app with curated content generated from Obsidian Mark
 - **Content import/build:** A small Node.js/TypeScript command-line script that reads the selected Markdown export, parses the agreed note metadata and Obsidian wikilinks, validates relationships, and generates structured JSON for the app.
 - **Data format at runtime:** Generated JSON bundled with the web app. The browser does not need access to the Obsidian vault or a database.
 - **End-to-end tests:** Playwright in a separate test project. The tests should be able to target both a local app and a deployed test/staging URL through configuration.
+- **Test report:** Playwright's built-in HTML reporter, with a distinct named test for each
+  US1-US4 browser scenario. Generate a report per run and retain the
+  customer-delivery report with the matching app version/commit and test date.
 - **Deployment:** Static web hosting that can serve the built Vite application. The app has no server-side runtime requirement for the MVP.
 
 This stack is a recommendation, not a requirement to retain the RSS sample's ASP.NET Core and Blazor architecture. It keeps the initial application and content pipeline small and uses Playwright for the requested browser testing.
@@ -54,6 +57,12 @@ The import command itself must report invalid required data and broken links bef
 
 Browser tests should target a locally served build in routine development and optionally a deployed test/staging instance before release.
 
+Configure Playwright to generate an HTML report without automatically opening a browser.
+Use customer-readable test names and one executable test per US1-US4 browser scenario so the report
+shows individual outcomes. For a customer delivery, retain or attach the report with the matching
+version or commit and test-run date. Do not include private source-note content in test names or
+attachments.
+
 ## Deployment and updates
 
 Deploy the generated static site to a static web host. Each content update follows this process:
@@ -65,6 +74,15 @@ Deploy the generated static site to a static web host. Each content update follo
 5. Deploy the new static build.
 
 The static app has no protected server-side data: content included in a deployment should be treated as public and must be reviewed for privacy, accuracy, and permission to publish.
+
+## Customer delivery documentation
+
+Maintain the illustrated reader guide in `docs/user-guide.md` with screenshots in
+`docs/screenshots/`. Update the relevant guide section and screenshots as each user-facing
+feature is accepted; review them against the shipped UI before delivery. Maintain an
+`Unreleased` section in `CHANGELOG.md`, then prepare a dated or versioned customer-facing
+release-notes entry for each deployment. Include the guide, screenshots, release notes, and
+Playwright HTML report with the customer delivery.
 
 ## Not required for MVP
 

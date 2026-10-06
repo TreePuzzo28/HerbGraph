@@ -36,6 +36,13 @@ The MVP MUST:
 - Use data generated from selected Obsidian Markdown notes through a repeatable import/build process.
 - Report missing required metadata and unresolved or ambiguous internal links during import.
 - Display supported Obsidian wikilinks as app links rather than exposing raw `[[wikilink]]` syntax.
+- Generate a customer-readable HTML report for each Playwright acceptance run, with a separate plain-English outcome for every US1-US4 browser scenario.
+- Include an updated illustrated user guide and dated or versioned release notes with each customer delivery.
+
+Maintain the user guide cumulatively as user-facing features are accepted. Update its instructions
+and screenshots to match the current UI, then review all release materials before delivery.
+Maintain an `Unreleased` release-notes section during development and prepare a dated or versioned
+entry for each customer delivery.
 
 The disclaimer must communicate that the app provides educational information, not medical advice, diagnosis, or treatment recommendations. Initial wording:
 
@@ -60,6 +67,7 @@ The importer must not silently invent relationships or discard broken links. It 
 - Full-text search across all book content
 - Interactive network graph visualization
 - Automatic scheduled content updates
+- A customer report format other than the generated Playwright HTML report
 
 ## Later possibilities
 

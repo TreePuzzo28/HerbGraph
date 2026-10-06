@@ -1,0 +1,86 @@
+name: Validate and deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    outputs:
+      has_approved_content: ${{ steps.content.outputs.has_approved_content }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install application dependencies
+        run: npm ci
+
+      - name: Install browser-test dependencies
+        run: npm ci --prefix tests/e2e
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+        working-directory: tests/e2e
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Build and validate approved content
+        run: npm run build
+
+      - name: Run browser tests
+        run: npm run test:e2e --prefix tests/e2e
+
+      - name: Check for owner-approved publication records
+        id: content
+        run: |
+          if find content/approved -type f -name '*.md' -print -quit | grep -q .; then
+            echo "has_approved_content=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_approved_content=false" >> "$GITHUB_OUTPUT"
+            echo "No approved Markdown records; validation passed but publication is skipped."
+          fi
+
+      - name: Upload static site
+        if: steps.content.outputs.has_approved_content == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    if: >-
+      needs.validate.outputs.has_approved_content == 'true' &&
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
