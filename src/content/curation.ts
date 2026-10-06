@@ -66,6 +66,7 @@ export interface CuratedRecordResult {
 
 export function validateCuratedRelationships(
   records: CuratedRecord[],
+  strict: boolean = true,
 ): string[] {
   const errors: string[] = [];
   const byLabel = new Map<string, CuratedRecord[]>();
@@ -99,43 +100,45 @@ export function validateCuratedRelationships(
     }
   }
 
-  for (const record of records) {
-    const relationships = [
-      ...(record.actions ?? []).map((value) => ({
-        field: 'actions',
-        value,
-        expectedType: 'action',
-      })),
-      ...(record.health_challenges ?? []).map((value) => ({
-        field: 'health_challenges',
-        value,
-        expectedType: 'challenge',
-      })),
-    ];
-    for (const relationship of relationships) {
-      const match = /^\[\[([^\]|#^]+)(?:\|([^\]]+))?\]\]$/.exec(
-        relationship.value.trim(),
-      );
-      if (!match || !match[1].trim() || (match[2] !== undefined && !match[2].trim())) {
-        errors.push(
-          `${record.filename}: ${relationship.field} has an unsupported link "${relationship.value}".`,
+  if (strict) {
+    for (const record of records) {
+      const relationships = [
+        ...(record.actions ?? []).map((value) => ({
+          field: 'actions',
+          value,
+          expectedType: 'action',
+        })),
+        ...(record.health_challenges ?? []).map((value) => ({
+          field: 'health_challenges',
+          value,
+          expectedType: 'challenge',
+        })),
+      ];
+      for (const relationship of relationships) {
+        const match = /^\[\[([^\]|#^]+)(?:\|([^\]]+))?\]\]$/.exec(
+          relationship.value.trim(),
         );
-        continue;
-      }
-      const target = match[1].trim();
-      const matches = byLabel.get(normalize(target)) ?? [];
-      if (matches.length === 0) {
-        errors.push(
-          `${record.filename}: ${relationship.field} links to "${target}", which is not among the approved records.`,
-        );
-      } else if (matches.length > 1) {
-        errors.push(
-          `${record.filename}: ${relationship.field} link "${target}" is ambiguous.`,
-        );
-      } else if (matches[0].type !== relationship.expectedType) {
-        errors.push(
-          `${record.filename}: ${relationship.field} link "${target}" must refer to a ${relationship.expectedType}.`,
-        );
+        if (!match || !match[1].trim() || (match[2] !== undefined && !match[2].trim())) {
+          errors.push(
+            `${record.filename}: ${relationship.field} has an unsupported link "${relationship.value}".`,
+          );
+          continue;
+        }
+        const target = match[1].trim();
+        const matches = byLabel.get(normalize(target)) ?? [];
+        if (matches.length === 0) {
+          errors.push(
+            `${record.filename}: ${relationship.field} links to "${target}", which is not among the approved records.`,
+          );
+        } else if (matches.length > 1) {
+          errors.push(
+            `${record.filename}: ${relationship.field} link "${target}" is ambiguous.`,
+          );
+        } else if (matches[0].type !== relationship.expectedType) {
+          errors.push(
+            `${record.filename}: ${relationship.field} link "${target}" must refer to a ${relationship.expectedType}.`,
+          );
+        }
       }
     }
   }

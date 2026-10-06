@@ -59,6 +59,7 @@ export function ContentImportPage() {
   const [items, setItems] = useState<ReviewItem[]>([]);
   const [fileError, setFileError] = useState<string>();
   const [downloaded, setDownloaded] = useState(false);
+  const [strictValidation, setStrictValidation] = useState(true);
   const approvedRecords = useMemo(
     () =>
       items
@@ -69,8 +70,8 @@ export function ContentImportPage() {
     [items],
   );
   const relationshipErrors = useMemo(
-    () => validateCuratedRelationships(approvedRecords),
-    [approvedRecords],
+    () => validateCuratedRelationships(approvedRecords, strictValidation),
+    [approvedRecords, strictValidation],
   );
 
   const itemsByType = useMemo(() => {
@@ -257,6 +258,22 @@ export function ContentImportPage() {
         />
       </label>
       {fileError && <p role="alert">{fileError}</p>}
+
+      <label className="validation-toggle">
+        <input
+          type="checkbox"
+          checked={strictValidation}
+          onChange={(event) => setStrictValidation(event.currentTarget.checked)}
+        />
+        <span>
+          <strong>Strict validation</strong>
+          <em>
+            {strictValidation
+              ? 'Requires all relationships to exist'
+              : 'Allows partial imports (checks for duplicates only)'}
+          </em>
+        </span>
+      </label>
 
       {items.length > 0 && (
         <div className="content-import-layout">
