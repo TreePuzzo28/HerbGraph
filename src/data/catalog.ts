@@ -1,6 +1,16 @@
 import { z } from 'zod';
 import type { CatalogEntry, EntryType, PublishedCatalog } from '../types/catalog';
 
+const apothecaryApplicationsSchema = z
+  .object({
+    keyChallengesAddressed: z.string().trim().min(1).optional(),
+    bestPreparations: z.string().trim().min(1).optional(),
+    preparationNotes: z.string().trim().min(1).optional(),
+    keyChemistryMechanics: z.string().trim().min(1).optional(),
+    safetyContraindications: z.string().trim().min(1).optional(),
+  })
+  .strict();
+
 const catalogEntrySchema = z
   .object({
     id: z.string().min(1),
@@ -12,8 +22,18 @@ const catalogEntrySchema = z
     challengeIds: z.array(z.string()),
     actionIds: z.array(z.string()),
     herbIds: z.array(z.string()),
+    apothecaryApplications: apothecaryApplicationsSchema.optional(),
   })
-  .strict();
+  .strict()
+  .superRefine((entry, context) => {
+    if (entry.apothecaryApplications && entry.type !== 'herb') {
+      context.addIssue({
+        code: 'custom',
+        path: ['apothecaryApplications'],
+        message: 'Apothecary subsections are only valid on herb entries.',
+      });
+    }
+  });
 
 const publishedCatalogSchema = z
   .object({

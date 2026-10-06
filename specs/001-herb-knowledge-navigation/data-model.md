@@ -21,6 +21,24 @@ Represents one health challenge, action, or herb.
 | `herbIds` | string array | yes | Resolved links to herb entries. |
 | `image` | reserved optional object | no | Future extension only; not populated or required in the MVP. |
 
+## Herb-specific content
+
+Herb entries may include an optional `apothecaryApplications` object corresponding to the
+`## 🧪 Apothecary & Applications` section in the Herb Template. Its optional fields map to the
+five `###` subsections in the template:
+
+| Field | Source subsection | Type | Rules |
+|---|---|---|---|
+| `keyChallengesAddressed` | Key Challenges Addressed | string | Owner-approved content for this subsection. |
+| `bestPreparations` | Best Preparations | string | Owner-approved content for this subsection. |
+| `preparationNotes` | Preparation Notes & Apothecary Secrets | string | Owner-approved content for this subsection. |
+| `keyChemistryMechanics` | Key Chemistry & Mechanics | string | Owner-approved content for this subsection. |
+| `safetyContraindications` | Safety & Contraindications | string | Owner-approved content for this subsection. |
+
+The subsection headings and their order are fixed by the template. Each value is optional and
+contains only the corresponding approved subsection content; this object does not authorize
+publishing the rest of a herb note body.
+
 ## Source records and relationship declarations
 
 The curated Markdown export identifies each record with YAML frontmatter:
@@ -53,9 +71,12 @@ those IDs to entries and provide consistent bidirectional navigation.
 Content has an authoring-to-publication lifecycle outside the application:
 
 1. Source material is edited in Obsidian.
-2. Owner selects and curates an approved export.
-3. Import validates and normalizes entries; invalid input produces errors and no publishable
+2. Owner selects source Markdown files in the browser-local preparation page. The page previews
+   the allowlisted metadata and supported herb subsections, then exports only individually
+   approved records without uploading or modifying source files.
+3. Owner extracts the minimal records into `content/approved/`.
+4. Import validates and normalizes entries; invalid input produces errors and no publishable
    catalog.
-4. Valid catalog is built into the static app and deployed.
+5. Valid catalog is built into the static app and deployed after a separate owner decision.
 
 Readers do not mutate catalog data. Updates create a new static catalog/build.

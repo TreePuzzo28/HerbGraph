@@ -72,4 +72,39 @@ describe('catalog helpers', () => {
       }),
     ).toThrow();
   });
+
+  it('accepts apothecary subsections only for herbs and rejects unknown fields', () => {
+    const herb = catalogFixture.entries.find(({ type }) => type === 'herb');
+    const action = catalogFixture.entries.find(({ type }) => type === 'action');
+    expect(herb?.apothecaryApplications?.bestPreparations).toContain(
+      'Synthetic preparation',
+    );
+
+    expect(() =>
+      parseCatalog({
+        ...catalogFixture,
+        entries: [
+          {
+            ...action,
+            apothecaryApplications: { bestPreparations: 'Not allowed here.' },
+          },
+        ],
+      }),
+    ).toThrow(/only valid on herb/i);
+
+    expect(() =>
+      parseCatalog({
+        ...catalogFixture,
+        entries: [
+          {
+            ...herb,
+            apothecaryApplications: {
+              ...herb?.apothecaryApplications,
+              unapprovedHeading: 'Not allowed.',
+            },
+          },
+        ],
+      }),
+    ).toThrow();
+  });
 });

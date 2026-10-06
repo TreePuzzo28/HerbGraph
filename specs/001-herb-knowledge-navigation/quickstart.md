@@ -1,7 +1,6 @@
 # Quickstart: Herb Knowledge Navigation
 
-This guide describes the planned local validation flow. Exact package scripts are established
-when implementation tasks are completed; the command names below are the intended interface.
+This guide describes the implemented import, validation, test, and deployment flow.
 
 ## Prerequisites
 
@@ -9,46 +8,52 @@ when implementation tasks are completed; the command names below are the intende
 - A local checkout of the HerbGraph repository.
 - A curated, approved dataset in `content/approved/`; do not copy unapproved vault content.
 
-## Prepare and validate content
+## Select, review, and approve content
 
-1. Create or update minimal Markdown records in `content/approved/` using
-   [the content import contract](./contracts/content-import.md).
-2. Run the import/validation command:
+1. Install root dependencies if needed:
+
+   ```sh
+   npm ci
+   ```
+
+2. Start the separate Content Curator app:
+
+   ```sh
+   npm run curator:dev
+   ```
+
+3. Open `http://127.0.0.1:5174/`, select the Markdown records you want considered, and review
+   every displayed field. This is a separate localhost app; processing happens in the browser,
+   and selected source files are not uploaded or modified.
+4. Check the approval box only for each record you approve. Review all five herb subsections;
+   the page shows when a heading is absent and identifies frontmatter keys it will ignore.
+5. Resolve any relationship errors, then download the approved-record ZIP. Extract it at the
+   repository root so its files land in `content/approved/`. This action prepares records; it
+   does not commit or deploy them. The curator app runs on its own server and is not included in
+   the reader app's production build.
+
+## Validate and run locally
+
+1. Import and validate the approved minimal records:
 
    ```sh
    npm run content:import
    ```
 
-3. Confirm valid input generates `public/data/catalog.json`.
-4. Try a representative invalid link in a temporary test fixture and confirm the command
-   reports the source file and link and does not produce a publishable catalog. Do not commit
-   the deliberately invalid fixture.
-
-## Run and test locally
-
-1. Install dependencies from the repository root:
-
-   ```sh
-   npm install
-   ```
-
-2. Build the app with the generated catalog:
+2. Review `public/data/catalog.json`. With the checked-in empty approved-content folder, the
+   importer produces an empty catalog; no real vault records have been approved or added.
+3. Build the app; this reruns import validation before creating production assets:
 
    ```sh
    npm run build
    ```
 
-3. Start the local app:
+4. Install and run the separate Playwright project:
 
    ```sh
-   npm run dev
-   ```
-
-4. In a separate terminal, run the Playwright project from `tests/e2e`:
-
-   ```sh
-   npm install --prefix tests/e2e
+   npm ci --prefix tests/e2e
    npm run test:e2e --prefix tests/e2e
+   npm run test:curator --prefix tests/e2e
    ```
 
 5. Open the generated HTML report:
@@ -57,9 +62,9 @@ when implementation tasks are completed; the command names below are the intende
    npm run test:e2e:report --prefix tests/e2e
    ```
 
-   Confirm each US1-US4 browser scenario appears as its own plain-English
-   result. For a customer delivery, retain the complete report directory with the matching app
-   version or commit and test-run date.
+   Confirm each browser scenario appears as its own plain-English result. The
+   report is generated locally under `tests/e2e/playwright-report/` and is not
+   committed.
 
 6. Verify the following browser path: open a challenge, follow an action, open an herb, return
    to the action, and select an alternative herb. Also verify the disclaimer on browse and
@@ -69,8 +74,10 @@ when implementation tasks are completed; the command names below are the intende
 
 1. Confirm that the approved export contains no private or unapproved information.
 2. Run content validation, build, unit tests, and Playwright tests.
-3. Deploy the static build to GitHub Pages after repository Pages settings and deployment
-   workflow are configured.
+3. Configure repository Pages to use GitHub Actions. The workflow validates pull
+   requests and pushes to `main`; it deploys only on `main` when at least one
+   Markdown record exists in `content/approved/`. Do not add records until their
+   publication has been explicitly approved.
 4. Open the deployed URL and repeat the challenge → action → herb → alternative herb path.
 5. Update an approved source record, repeat import/build/deploy, and verify the update appears
    in the deployed app.

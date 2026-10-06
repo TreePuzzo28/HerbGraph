@@ -2,6 +2,14 @@ export const entryTypes = ['challenge', 'action', 'herb'] as const;
 
 export type EntryType = (typeof entryTypes)[number];
 
+export interface ApothecaryApplications {
+  keyChallengesAddressed?: string;
+  bestPreparations?: string;
+  preparationNotes?: string;
+  keyChemistryMechanics?: string;
+  safetyContraindications?: string;
+}
+
 export interface CatalogEntry {
   id: string;
   type: EntryType;
@@ -12,6 +20,7 @@ export interface CatalogEntry {
   challengeIds: string[];
   actionIds: string[];
   herbIds: string[];
+  apothecaryApplications?: ApothecaryApplications;
 }
 
 export interface PublishedCatalog {

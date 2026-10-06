@@ -137,25 +137,30 @@ using the generated catalog; repeat the process after a record changes.
 
 ### Tests for User Story 4
 
-- [ ] T029 [P] [US4] Add importer unit fixtures for valid records, malformed YAML/frontmatter, duplicate IDs/aliases, missing and wrong-type links, and supported display-text wikilinks in `tests/unit/fixtures/content-import/`.
-- [ ] T030 [P] [US4] Add importer tests for allowlisted output fields, derived inverse relationships, deterministic JSON, nonzero failure, and no catalog write on invalid input in `tests/unit/import-content.test.ts`.
+- [X] T029 [P] [US4] Add importer unit fixtures for valid records with optional herb `apothecaryApplications` subsection fields, invalid/non-herb subsection fields, malformed YAML/frontmatter, duplicate IDs/aliases, missing and wrong-type links, and supported display-text wikilinks in `tests/unit/fixtures/content-import/`.
+- [X] T030 [P] [US4] Add importer tests for herb-subsection allowlisting and validation, non-herb rejection, output-field allowlists, derived inverse relationships, deterministic JSON, nonzero failure, and no catalog write on invalid input in `tests/unit/import-content.test.ts`.
 
 ### Implementation for User Story 4
 
-- [ ] T031 [US4] Implement YAML frontmatter parsing and strict allowlisted field validation for `type`, `title`, `aliases`, `summary`, `source`, `actions`, and `health_challenges` in `scripts/content/parseSourceRecord.ts`.
-- [ ] T032 [US4] Implement stable ID creation and unique title/filename/alias indexing in `scripts/content/entryIndex.ts`, rejecting collisions and ambiguous names.
-- [ ] T033 [US4] Implement the supported `[[Target]]` and `[[Target|Display text]]` frontmatter-link parser and expected-target-type validation in `scripts/content/parseRelationship.ts`.
-- [ ] T034 [US4] Implement relationship resolution, reverse indexes, duplicate removal, and actionable source-file diagnostics in `scripts/content/resolveRelationships.ts`.
-- [ ] T035 [US4] Implement the import CLI to read only `content/approved/`, validate the complete set before writing, and emit deterministic allowlisted JSON to `public/data/catalog.json` in `scripts/import-content.ts`.
-- [ ] T036 [US4] Connect runtime catalog loading to the generated `public/data/catalog.json` and retain a clear empty/not-found state when the catalog or requested entry is unavailable in `src/data/catalog.ts` and `src/app/App.tsx`.
-- [ ] T037 [US4] Add a documented, owner-curated starter dataset only after the owner approves each Markdown record, placing only approved fields and supported relationships in `content/approved/*.md`.
-- [ ] T038 [US4] Add root scripts for content import, unit tests, app build, and local preview in `package.json`; ensure the build runs import validation before Vite emits publishable assets.
-- [ ] T039 [US4] Add a GitHub Pages deployment workflow that runs content validation, unit tests, build, and separate Playwright tests before publishing `dist/` in `.github/workflows/deploy-pages.yml`.
-- [ ] T040 [US4] Update repository usage, content approval, validation, and deployment instructions with verified commands in `README.md` and `specs/001-herb-knowledge-navigation/quickstart.md`.
-- [ ] T041 [US4] Verify a valid content update appears after a fresh build and that invalid or unapproved fixture content cannot enter the deployed catalog using `tests/e2e/tests/published-catalog.spec.ts`.
+- [X] T031 [US4] Implement YAML frontmatter parsing and strict allowlisted field validation for `type`, `title`, `aliases`, `summary`, `source`, `actions`, `health_challenges`, and the herb-only `apothecaryApplications` object with its five optional approved plain-text subsection fields in `scripts/content/parseSourceRecord.ts`.
+- [X] T032 [US4] Implement stable ID creation and unique title/filename/alias indexing in `scripts/content/entryIndex.ts`, rejecting collisions and ambiguous names.
+- [X] T033 [US4] Implement the supported `[[Target]]` and `[[Target|Display text]]` frontmatter-link parser and expected-target-type validation in `scripts/content/parseRelationship.ts`.
+- [X] T034 [US4] Implement relationship resolution, reverse indexes, duplicate removal, and actionable source-file diagnostics in `scripts/content/resolveRelationships.ts`.
+- [X] T035 [US4] Implement the import CLI to read only `content/approved/`, validate the complete set before writing, and emit deterministic allowlisted JSON including only present, approved herb `apothecaryApplications` fields to `public/data/catalog.json` in `scripts/import-content.ts`.
+- [X] T036 [US4] Connect runtime catalog loading and types to the generated `public/data/catalog.json`, validate the optional herb subsection object, render each populated subsection as an independently collapsible disclosure on herb details, and retain clear empty/not-found states in `src/data/catalog.ts`, `src/types/catalog.ts`, `src/pages/EntryDetailPage.tsx`, and `src/app/App.tsx`.
+- [ ] T037 [US4] Add a documented, owner-curated starter dataset only after the owner approves each Markdown record, placing only approved fields and supported relationships in `content/approved/*.md`. **Blocked:** no real records have been explicitly approved; do not add vault content or enable publication until the owner approves specific records.
+- [X] T038 [US4] Add root scripts for content import, unit tests, app build, and local preview in `package.json`; ensure the build runs import validation before Vite emits publishable assets.
+- [X] T039 [US4] Add a GitHub Pages deployment workflow that runs content validation, unit tests, build, and separate Playwright tests before publishing `dist/` in `.github/workflows/deploy-pages.yml`.
+- [X] T040 [US4] Update repository usage, content approval (including the five optional herb subsections and the rule against publishing other note-body content), validation, and deployment instructions with verified commands in `README.md`, `specs/001-herb-knowledge-navigation/quickstart.md`, and `specs/001-herb-knowledge-navigation/contracts/content-import.md`.
+- [X] T041 [US4] Verify a valid content update appears after a fresh build and that invalid or unapproved fixture content cannot enter the deployed catalog using `tests/e2e/tests/published-catalog.spec.ts`.
 
 **Checkpoint**: A content owner can repeat the documented, validated import/build/deploy process;
 generate and review the Playwright HTML report for the browser scenarios run in this phase.
+
+### Phase 6 follow-up: Browser-local content selection
+
+- [X] T053 [US4] Add a separate localhost-only curator app that shares browser-local Markdown extraction, review, approval, relationship validation, and ZIP export code with the reader project but is excluded from its production build in `curator/`, `src/content/curation.ts`, and `src/pages/ContentImportPage.tsx`.
+- [X] T054 [US4] Verify local extraction and approval behavior with unit and Playwright tests, and document the no-upload workflow in `specs/001-herb-knowledge-navigation/contracts/content-import.md`, `specs/001-herb-knowledge-navigation/quickstart.md`, `docs/user-guide.md`, and `README.md`.
 
 ---
 

@@ -32,3 +32,18 @@ It explains the app's educational purpose; it does not make the synthetic develo
 approved health content. Do not use the sample entries as medical guidance.
 
 ![The educational disclaimer shown above the herb browse list](./screenshots/educational-disclaimer.png)
+
+## Prepare an approved content import (separate local app)
+
+Run `npm run curator:dev` and open `http://127.0.0.1:5174/` to use the separate **Content
+Curator** app. It lets you select one or more Markdown files from your device. It
+processes selected files locally in your browser; it does not upload them or change the source
+notes. It has its own local-only entry point and is not part of the deployed reader app. The
+preview shows the supported frontmatter and, for herbs, each of the five recognized
+Apothecary & Applications subsections. Missing subsection headings and ignored frontmatter
+field names are called out, and other note-body sections are not included.
+
+Review the preview carefully and check the approval box only for records you want considered for
+publication. Relationship issues must be resolved before the ZIP can be downloaded. Extract the
+approved-record ZIP at the repository root, run the content importer, and review the generated
+catalog and app before committing or deploying. Preparing the ZIP does not publish anything.

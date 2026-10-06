@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test:e2e": "playwright test",
+    "test:curator": "playwright test --config=curator.config.ts",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:report": "playwright show-report"
   },

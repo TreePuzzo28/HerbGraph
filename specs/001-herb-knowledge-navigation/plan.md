@@ -7,9 +7,10 @@
 ## Summary
 
 Deliver a read-only static web app for browsing health challenges, herbal actions, and herbs in
-all directions. A small Node.js content-preparation tool will read only curated, approved
-Markdown exports, validate frontmatter and Obsidian links, and generate a minimized JSON
-catalog. The React app will display that catalog, while a separate Playwright project verifies
+all directions. A separate browser-based curator app will let the owner select Markdown files, inspect
+the exact allowlisted values extracted locally, and approve records individually before
+downloading minimal import files. A small Node.js content-preparation tool will validate those
+approved exports and Obsidian links and generate a minimized JSON catalog. The React app will display that catalog, while a separate Playwright project verifies
 the browsing flow and disclaimer. Playwright will emit a customer-readable HTML report with a
 distinct result for each US1-US4 browser scenario; retain the report with its
 app version/commit and test-run date for each delivery. Maintain an illustrated user guide and
@@ -46,7 +47,10 @@ broadband connection for the initial curated catalog; navigation between already
 does not require a network request
 
 **Constraints**: Only approved entries and whitelisted metadata may enter generated assets.
-Markdown bodies and raw HTML are not rendered. Import errors for malformed metadata, missing,
+The curator app processes only files explicitly selected by the owner, locally in the browser;
+it does not upload or modify source notes. It exports allowlisted frontmatter and the five
+approved herb-template subsections; all other body content is excluded. Markdown bodies and raw
+HTML are not rendered. Import errors for malformed metadata, missing,
 wrong-type, or ambiguous targets must block generation. Only the documented wikilink subset is
 supported. No live vault access, backend, database, account system, or interactive graph in the
 MVP.
@@ -109,8 +113,9 @@ public/
 src/
 ├── app/                      # Router and shared layout, including disclaimer
 ├── components/               # Entry links, lists, and shared UI
+├── content/                  # Browser-local source-note extraction and approval export
 ├── data/                     # Catalog loading and relationship selectors
-├── pages/                    # Browse and entry detail views
+├── pages/                    # Reader browse and entry detail views
 └── types/                    # Runtime and static catalog types
 
 tests/
@@ -118,7 +123,8 @@ tests/
 └── e2e/                      # Separate Playwright project with its own package manifest
 ```
 
-**Structure Decision**: Use one Vite app and one small import CLI in the repository, with
+**Structure Decision**: Use one Vite app with a browser-local content preparation page and one
+small import CLI in the repository, with
 Playwright in a distinct `tests/e2e` project. `content/approved` contains only deliberately
 curated export records, not full vault notes. Generated catalog data contains a whitelist of
 displayable fields. Keep app presentation, catalog access, and import validation in distinct

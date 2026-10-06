@@ -69,9 +69,10 @@ As the content owner, I want to prepare an updated app from selected Obsidian no
 
 **Acceptance Scenarios**:
 
-1. **Given** selected notes identify their entry type and contain links to other notes, **When** the owner runs the documented content preparation process, **Then** valid entries and supported relationships are available in the app.
+1. **Given** the owner selects source Markdown files in the separate local Content Curator app, **When** it processes them, **Then** it reads them locally, previews the allowlisted fields and supported herb subsections, and does not upload or modify the source files.
 2. **Given** an imported note has missing required information or a link that cannot be resolved uniquely, **When** the content preparation process runs, **Then** it reports the source note and problem and does not silently publish incomplete relationships.
-3. **Given** an updated approved note set passes validation, **When** the owner completes the documented build and deployment process, **Then** readers can access the updated content in the deployed app.
+3. **Given** the owner reviews the preview, **When** they explicitly approve individual records and download the generated archive, **Then** only those records and allowlisted fields are exported for CLI validation.
+4. **Given** an updated approved note set passes validation, **When** the owner completes the documented build and deployment process, **Then** readers can access the updated content in the deployed app.
 
 ---
 
@@ -143,6 +144,10 @@ As a reader or customer, I want a current illustrated guide and release notes wi
 - **FR-018**: The app MUST display a useful not-found state when a reader opens an invalid or unpublished entry address.
 - **FR-019**: The Playwright browser-acceptance suite MUST produce an HTML report for each run, listing every browser scenario for US1-US4 in plain English with a passed, failed, or skipped result.
 - **FR-020**: Each US1-US4 browser scenario intended for customer reporting MUST have a distinct test result; the report MUST identify the application version or commit and test-run date for a customer delivery.
+- **FR-021**: The owner MUST be able to run a separate local Content Curator app and select multiple Markdown files, which MUST process their contents locally in the browser without uploading or modifying the source files. The curator app MUST bind to loopback by default and MUST NOT be included in the reader app's production build.
+- **FR-022**: The preparation page MUST preview every allowlisted value, identify missing herb-template subsections and ignored frontmatter field names, and exclude all other note-body content from its export.
+- **FR-023**: The preparation page MUST require an explicit per-record approval before exporting that record and MUST block export when selected approved relationships are malformed, unresolved, ambiguous, or point to the wrong entry type.
+- **FR-024**: The preparation page MUST export only explicitly approved minimal Markdown records in an archive under `content/approved/`; it MUST NOT automatically write to the repository or deploy content.
 - **FR-021**: A failed acceptance test report MUST identify the failing scenario and include available diagnostics without requiring the reader to inspect test source code.
 - **FR-022**: The project MUST maintain a cumulative reader guide at `docs/user-guide.md` with screenshots in `docs/screenshots/`; the guide MUST be updated as each user-facing feature is accepted and MUST match the shipped app at release.
 - **FR-023**: Each customer delivery MUST include the current user guide, its applicable screenshots, and a dated or versioned release-notes entry.

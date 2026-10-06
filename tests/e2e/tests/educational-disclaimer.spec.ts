@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '../fixtures';
 
 const disclaimerText =
   'Educational information only. This content is not medical advice and is not intended to diagnose, treat, cure, or prevent any condition. Consult a qualified healthcare professional about health concerns.';

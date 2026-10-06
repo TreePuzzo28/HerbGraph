@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '../fixtures';
 
 test('health challenge browsing lists only health challenges', async ({ page }) => {
   await page.goto('./#/challenges');

@@ -14,6 +14,20 @@ const entryTypeLabels = {
   herb: 'Herb',
 } as const;
 
+const apothecarySections = [
+  { field: 'keyChallengesAddressed', heading: 'Key Challenges Addressed' },
+  { field: 'bestPreparations', heading: 'Best Preparations' },
+  {
+    field: 'preparationNotes',
+    heading: 'Preparation Notes & Apothecary Secrets',
+  },
+  { field: 'keyChemistryMechanics', heading: 'Key Chemistry & Mechanics' },
+  {
+    field: 'safetyContraindications',
+    heading: 'Safety & Contraindications',
+  },
+] as const;
+
 export function EntryDetailPage({ catalog }: EntryDetailPageProps) {
   const { entryId } = useParams();
 
@@ -37,6 +51,25 @@ export function EntryDetailPage({ catalog }: EntryDetailPageProps) {
           <strong>Source:</strong> {entry.source}
         </p>
       )}
+      {entry.type === 'herb' &&
+        apothecarySections.some(({ field }) =>
+          Boolean(entry.apothecaryApplications?.[field]),
+        ) && (
+          <section aria-labelledby="apothecary-applications-title">
+            <h2 id="apothecary-applications-title">
+              Apothecary & Applications
+            </h2>
+            {apothecarySections.map(({ field, heading }) => {
+              const content = entry.apothecaryApplications?.[field];
+              return content ? (
+                <details key={field}>
+                  <summary>{heading}</summary>
+                  <p className="herb-subsection-content">{content}</p>
+                </details>
+              ) : null;
+            })}
+          </section>
+        )}
       <RelatedEntryLinks catalog={catalog} entry={entry} />
       <p>
         <Link to="/">Back to browse</Link>

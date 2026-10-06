@@ -39,7 +39,11 @@
       "summary": "A synthetic herb used only for app tests.",
       "challengeIds": ["challenge:restless-mind"],
       "actionIds": ["action:calming", "action:grounding"],
-      "herbIds": []
+      "herbIds": [],
+      "apothecaryApplications": {
+        "bestPreparations": "Synthetic preparation text with preserved\nparagraph breaks.",
+        "safetyContraindications": "Synthetic safety text."
+      }
     },
     {
       "id": "herb:sample-flower",

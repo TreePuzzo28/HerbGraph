@@ -1,0 +1,4 @@
+---
+type: herb
+apothecaryApplications: [
+---
