@@ -116,17 +116,21 @@ export function resolveRelationships(
     }
     
     if (matches.length > 1) {
-      errors.push(
-        `${record.sourcePath}: ${field} link "${value}" is ambiguous across ${matches.map(({ sourcePath }) => sourcePath).join(', ')}`,
-      );
+      const ambiguityError = `${record.sourcePath}: ${field} link "${value}" is ambiguous across ${matches.map(({ sourcePath }) => sourcePath).join(', ')}`;
+      if (mode === 'strict') {
+        errors.push(ambiguityError);
+      }
+      // lenient/auto-stub: silently skip
       return undefined;
     }
 
     const match = matches[0];
     if (match.type !== expectedType) {
-      errors.push(
-        `${record.sourcePath}: ${field} link "${value}" resolves to ${match.type}; expected ${expectedType}`,
-      );
+      const typeError = `${record.sourcePath}: ${field} link "${value}" resolves to ${match.type}; expected ${expectedType}`;
+      if (mode === 'strict') {
+        errors.push(typeError);
+      }
+      // lenient/auto-stub: silently skip
       return undefined;
     }
     return match;
