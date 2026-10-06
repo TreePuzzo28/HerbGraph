@@ -828,25 +828,45 @@ Actionable task list derived from implementation plan. Each task is labeled with
 
 # Phase 6: Future Enhancements
 
-**Phase Status:** 🔮 Planned (0/10+ tasks)  
+**Phase Status:** ⏳ In Progress (1/10+ tasks complete)  
 **Dependencies:** Phase 5 complete
 
 ### Task F6.1: Lenient Mode for Import Script
 
 **Requirement:** Allow incomplete relationships at import time  
 **App:** [Integration]  
-**Status:** 🔮 Planned  
+**Status:** ✅ Done  
 **Description:** Add `lenient` parameter to import script so it filters missing entries instead of failing.
 
 **Benefit:** Users can test with partial data without needing every referenced entry approved.
 
-**Deliverables:**
-- [ ] Add parameter to importApprovedContent()
-- [ ] Modify resolveRelationships() to filter vs throw
-- [ ] Update error handling
-- [ ] Document in spec.md
+**Deliverables:** ✅
+- ✅ Lenient mode silently skips ALL broken relationships
+  - Missing references (not found)
+  - Ambiguous references (multiple matches)
+  - Type mismatches (wrong entry type)
+- ✅ Only imports entries with complete, valid relationships
+- ✅ Works with existing auto-stub and strict modes
 
-**Dependencies:** Task I4.2
+**Usage:**
+```bash
+npm run content:import                    # auto-stub (default) - 47 entries
+npm run content:import --mode=lenient     # lenient - 11 entries (only complete)
+npm run content:import --mode=strict      # strict - fails on any error
+```
+
+**Test Results:** ✅
+- Lenient mode: 11 entries (only those with valid relationships)
+- Auto-stub mode: 47 entries (11 original + 36 stubs)
+- Strict mode: fails as expected (validation mode)
+
+**Commits:**
+- d0a6a44: feat: Improve lenient mode error handling for import script
+
+**User Workflow:**
+1. Partial vault data? → Use lenient mode
+2. Want placeholders for testing? → Use auto-stub (default)
+3. Need validation? → Use strict mode
 
 ---
 
