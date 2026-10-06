@@ -100,3 +100,30 @@ test('the review lists each missing herb subsection before approval', async ({
     ),
   ).toHaveCount(5);
 });
+
+test('multiple sequential file selections accumulate records instead of clearing', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const fileInput = page.locator('input[type="file"]');
+
+  // First selection: add a herb
+  await fileInput.setInputFiles(resolve(validFixtures, 'German Chamomile.md'));
+  await expect(page.getByRole('heading', { name: 'German Chamomile' })).toBeVisible();
+  await expect(page.getByText('Total records')).toContainText('1');
+
+  // Second selection: add an action (herb should still be visible)
+  await fileInput.setInputFiles(resolve(validFixtures, 'Calming.md'));
+  await expect(page.getByRole('heading', { name: 'German Chamomile' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Calming' })).toBeVisible();
+  await expect(page.getByText('Total records')).toContainText('2');
+
+  // Third selection: add a health challenge (both should still be visible)
+  await fileInput.setInputFiles(
+    resolve(validFixtures, 'Restless Mind.md'),
+  );
+  await expect(page.getByRole('heading', { name: 'German Chamomile' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Calming' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Restless Mind' })).toBeVisible();
+  await expect(page.getByText('Total records')).toContainText('3');
+});
