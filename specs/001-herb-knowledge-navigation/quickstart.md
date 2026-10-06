@@ -34,14 +34,20 @@ This guide describes the implemented import, validation, test, and deployment fl
 
 ## Validate and run locally
 
-1. Import and validate the approved minimal records:
+1. After extracting approved records to `content/approved/`, run the import script to generate
+   the catalog that the Explorer reads:
 
    ```sh
    npm run content:import
    ```
 
+   This script processes all Markdown files in `content/approved/`, validates relationships,
+   auto-generates stubs for missing entries, and generates `public/data/catalog.json`. The
+   Explorer will not display any content until this step completes.
+
 2. Review `public/data/catalog.json`. With the checked-in empty approved-content folder, the
    importer produces an empty catalog; no real vault records have been approved or added.
+
 3. Build the app; this reruns import validation before creating production assets:
 
    ```sh
